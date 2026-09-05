@@ -57,7 +57,7 @@ dragonbyte/
 - Agregar fotos, avatares o mascotas en `img/`.
 - Agregar capturas de pantalla.
 - Completar la documentación del uso de IA.
-- Publicar en Vercel y agregar aquí la URL.
+- Publicar en Vercel y agregar aquí la URL. [https://tp-1-front-end-grupo-23.vercel.app/]
 
 ## Uso de IA
 
