@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title description">
+  <title id="title">Imagen provisoria</title>
+  <desc id="description">Espacio reservado para la fotografía del integrante.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17223b"/>
+      <stop offset="1" stop-color="#0a1020"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#background)"/>
+  <rect
+    x="32"
+    y="32"
+    width="736"
+    height="436"
+    rx="20"
+    fill="none"
+    stroke="#49e5ff"
+    stroke-opacity=".35"
+    stroke-width="3"
+    stroke-dasharray="14 12"
+  />
+  <circle
+    cx="400"
+    cy="205"
+    r="70"
+    fill="#49e5ff"
+    fill-opacity=".12"
+    stroke="#49e5ff"
+    stroke-opacity=".65"
+    stroke-width="3"
+  />
+  <path
+    d="M275 390c18-80 65-120 125-120s107 40 125 120"
+    fill="#49e5ff"
+    fill-opacity=".12"
+    stroke="#49e5ff"
+    stroke-opacity=".65"
+    stroke-width="3"
+  />
+  <text
+    x="400"
+    y="440"
+    fill="#aeb9d5"
+    font-family="Arial, sans-serif"
+    font-size="24"
+    text-anchor="middle"
+    letter-spacing="6"
+  >
+    FOTO
+  </text>
+</svg>

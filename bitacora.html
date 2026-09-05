@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bitácora de desarrollo del equipo DragonByte.">
+    <title>DragonByte | Bitácora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="css/styles.css?v=2">
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">DB</span>
+        <span>DRAGONBYTE</span>
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="main-menu"
+      >
+        Menú
+      </button>
+      <nav id="main-menu" class="main-nav" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#equipo">Equipo</a>
+        <a class="is-active" href="bitacora.html">Bitácora</a>
+      </nav>
+    </header>
+
+    <main class="inner-main">
+      <header class="page-intro">
+        <p class="eyebrow">REGISTRO DE MISIÓN</p>
+        <h1>Bitácora del proyecto</h1>
+        <p>
+          Decisiones, avances, dificultades y aprendizajes del equipo. Se completar una entrada en cada
+          jornada de trabajo.
+        </p>
+      </header>
+
+      <section class="timeline" aria-label="Entradas de la bitácora">
+        <article class="log-entry">
+          <div class="log-date">
+            <span>01</span>
+            <small>Inicio</small>
+          </div>
+          <div>
+            <p class="role">Fecha: 04/09/2026</p>
+            <h2>Definición del equipo y estructura</h2>
+            <p>Creamos la identidad DragonByte y la estructura inicial de archivos según la consigna.</p>
+            <h3>Decisiones</h3>
+            <p>Elegimos una estética que combina tecnología, terminales y energía inspirada en el anime.</p>
+            <h3>Próximo paso</h3>
+            <p>Reemplazar los datos provisorios, definir roles y agregar avatares.</p>
+          </div>
+        </article>
+
+        <article class="log-entry is-placeholder">
+          <div class="log-date">
+            <span>02</span>
+            <small>Próxima</small>
+          </div>
+          <div>
+            <p class="role">Fecha: pendiente</p>
+            <h2>Título de la próxima entrada</h2>
+            <p>Describir qué se hizo, quiénes participaron, qué problema apareció y cómo se resolvió.</p>
+          </div>
+        </article>
+      </section>
+
+      <div class="page-actions">
+        <a class="button button-secondary" href="index.html">← Volver al inicio</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>DragonByte · Bitácora de desarrollo</p>
+      <a href="index.html">Inicio</a>
+    </footer>
+  </body>
+</html>
