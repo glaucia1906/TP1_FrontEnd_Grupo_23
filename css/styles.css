@@ -518,6 +518,41 @@ body.powered {
   object-position: center;
 }
 
+/* Fotos con recorte circular: se ajustan al marco sin deformarse ni mostrar el fondo blanco */
+.member-photo.is-round img {
+  inset: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: calc(100% - 20px);
+  max-width: calc(100% - 20px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-card .profile-photo.is-round {
+  aspect-ratio: 1;
+  max-width: 300px;
+  padding: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(73, 229, 255, .12);
+}
+
+.profile-card .profile-photo.is-round img {
+  inset: 0;
+  top: 0;
+  left: 0;
+  transform: none;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  aspect-ratio: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
 .profile-card h1 {
   font-size: clamp(2rem, 4vw, 3.4rem);
 }
