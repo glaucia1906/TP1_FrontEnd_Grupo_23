@@ -1,0 +1,62 @@
+[
+  {
+    "name": "redondos-gulp",
+    "source": "https://music.apple.com/us/album/gulp/1722367046",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/7e/79/83/7e79835a-0a77-2a35-fd60-677fa41f5e4b/d617bb55-cd75-4921-b73d-f0dc84f876c0.jpg/600x600bb.jpg"
+  },
+  {
+    "name": "callejeros-presion",
+    "source": "https://music.apple.com/us/album/presi%C3%B3n/1043397022",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music41/v4/b6/d5/d7/b6d5d74f-7c07-0c6f-eab1-d0371e6e7fd4/mzm.ndajtwiq.jpg/600x600bb.jpg"
+  },
+  {
+    "name": "callejeros-rocanroles",
+    "source": "https://music.apple.com/us/album/rocanroles-sin-destino/1043374272",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/a9/12/8e/a9128ecc-6932-836e-dfb2-632d7661210e/889845766964.jpg/600x600bb.jpg"
+  },
+  {
+    "name": "rhcp-californication",
+    "source": "https://music.apple.com/us/album/californication-remastered/945575406",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/4c/86/1d/4c861dab-5428-f3b7-8068-82bb69db5e89/093624932130.jpg/600x600bb.jpg"
+  },
+  {
+    "name": "redondos-oktubre",
+    "source": "https://en.wikipedia.org/wiki/Oktubre",
+    "image": "https://thumb.wikimedia.org/wikipedia/en/thumb/8/8f/Oktubre_%281986%29_cover.jpg/250px-Oktubre_%281986%29_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+  },
+  {
+    "name": "harry-potter",
+    "source": "https://www.movieposters.com/collections/franchise-harry-potter-originals/products/harry-potter-and-the-philosophers-stone-mpw-142704",
+    "image": "http://www.movieposters.com/cdn/shop/files/harry-potter-and-the-philosophers-stone_da927a3d_4dec8d96-a078-4ce2-ab45-20ee0107036e_1024x1024.jpg?v=1788549070"
+  },
+  {
+    "name": "senor-de-los-anillos",
+    "source": "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings%3A_The_Fellowship_of_the_Ring",
+    "image": "https://upload.wikimedia.org/wikipedia/en/f/fb/Lord_Rings_Fellowship_Ring.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled"
+  },
+  {
+    "name": "dragon-ball-z",
+    "source": "https://myanimelist.net/anime/813",
+    "image": "https://cdn.myanimelist.net/images/anime/1277/142022.jpg"
+  },
+  {
+    "name": "fullmetal-alchemist",
+    "source": "https://myanimelist.net/anime/5114",
+    "image": "https://cdn.myanimelist.net/images/anime/1208/94745.jpg"
+  },
+  {
+    "name": "jujutsu-kaisen",
+    "source": "https://myanimelist.net/anime/40748",
+    "image": "https://cdn.myanimelist.net/images/anime/1171/109222.jpg"
+  },
+  {
+    "name": "demon-slayer",
+    "source": "https://myanimelist.net/anime/38000",
+    "image": "https://cdn.myanimelist.net/images/anime/1286/99889.jpg"
+  },
+  {
+    "name": "shingeki-no-kyojin",
+    "source": "https://myanimelist.net/anime/16498",
+    "image": "https://cdn.myanimelist.net/images/anime/10/47347.jpg"
+  }
+]
