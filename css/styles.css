@@ -652,13 +652,101 @@ body.powered {
 
 .favorites {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
+  grid-template-columns: 1fr;
+  gap: 32px;
 }
 
 .favorites ul {
   color: var(--muted);
   padding-left: 20px;
+}
+
+/* Grillas de portadas (películas/series y discos) */
+.cover-grid {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cover-grid--posters {
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+}
+
+.cover-grid--albums {
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+
+.cover {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.cover-grid--posters .cover {
+  aspect-ratio: 2 / 3;
+}
+
+.cover-grid--albums .cover {
+  aspect-ratio: 1;
+}
+
+.cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.cover-title {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 22px 10px 10px;
+  background: linear-gradient(transparent, rgba(7, 11, 24, .93) 55%);
+  color: var(--text);
+  font-size: .72rem;
+  line-height: 1.25;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.cover:hover,
+.cover:focus-within {
+  transform: translateY(-4px);
+  border-color: var(--cyan);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, .45);
+}
+
+.cover:hover .cover-title,
+.cover:focus-within .cover-title {
+  opacity: 1;
+  transform: none;
+}
+
+@media (hover: none) {
+  .cover-title {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover,
+  .cover-title {
+    transition: none;
+  }
+  .cover:hover,
+  .cover:focus-within {
+    transform: none;
+  }
 }
 
 .media-grid {
