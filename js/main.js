@@ -17,20 +17,26 @@ powerButton?.addEventListener('click', () => {
     : 'Nivel de energía: estable.';
 });
 
-const glauciaTransform = document.querySelector('#glaucia-transform');
-const transformHint = glauciaTransform?.querySelector('.transform-hint');
+const profileTransforms = document.querySelectorAll('.member-photo-transform');
 
-glauciaTransform?.addEventListener('click', () => {
-  const isTransformed = glauciaTransform.classList.toggle('is-transformed');
-  glauciaTransform.setAttribute('aria-pressed', String(isTransformed));
-  glauciaTransform.setAttribute(
-    'aria-label',
-    isTransformed
-      ? 'Volver al estado base de Glaucia'
-      : 'Activar ki saiyajin de Glaucia'
-  );
+profileTransforms.forEach((transformButton) => {
+  const memberName = transformButton.dataset.memberName;
+  const transformHint = transformButton.querySelector('.transform-hint');
 
-  if (transformHint) {
-    transformHint.textContent = isTransformed ? 'Volver al estado base' : 'Activar ki saiyajin';
-  }
+  transformButton.addEventListener('click', () => {
+    const isTransformed = transformButton.classList.toggle('is-transformed');
+    transformButton.setAttribute('aria-pressed', String(isTransformed));
+    transformButton.setAttribute(
+      'aria-label',
+      isTransformed
+        ? `Volver al estado base de ${memberName}`
+        : `Activar ki saiyajin de ${memberName}`
+    );
+
+    if (transformHint) {
+      transformHint.textContent = isTransformed
+        ? 'Volver al estado base'
+        : 'Activar ki saiyajin';
+    }
+  });
 });

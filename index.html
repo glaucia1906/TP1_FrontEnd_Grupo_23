@@ -11,8 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="css/styles.css?v=7">
-    <script src="js/main.js?v=2" defer></script>
+    <link rel="stylesheet" href="css/styles.css?v=10">
+    <script src="js/main.js?v=3" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -67,28 +67,46 @@
         </div>
         <div class="team-grid">
           <article class="member-card">
-            <div class="member-photo is-round">
-              <img src="img/Seba-FaseNormal.png" alt="Foto de Sebastián Fernández">
-            </div>
+            <button
+              class="member-photo member-photo-transform"
+              type="button"
+              data-member-name="Sebastián"
+              aria-pressed="false"
+              aria-label="Activar ki saiyajin de Sebastián"
+            >
+              <img
+                class="portrait-base"
+                src="img/Seba-FaseNormal.png"
+                alt="Sebastián Fernández en estado base"
+              >
+              <img
+                class="portrait-transformed"
+                src="img/SebaSsj2.png"
+                alt=""
+                aria-hidden="true"
+              >
+              <span class="transform-hint" aria-hidden="true">Activar ki saiyajin</span>
+            </button>
             <p class="role">Desarrollador/a · Rol a definir</p>
-            <h3>Sebastián Fernández</h3><p>Perfil personal con información provisoria.</p>
+            <h3>Sebastián Fernández</h3>
+            <p>Perfil personal con información provisoria.</p>
             <a class="card-link" href="sebastian-fernandez.html">Ver perfil <span aria-hidden="true">→</span></a>
           </article>
           <article class="member-card">
             <button
-              id="glaucia-transform"
               class="member-photo member-photo-transform"
               type="button"
+              data-member-name="Glaucia"
               aria-pressed="false"
               aria-label="Activar ki saiyajin de Glaucia"
             >
               <img
-                class="portrait-real"
+                class="portrait-base"
                 src="img/glaucia-ferreira.jpeg"
                 alt="Glaucia Ferreira"
               >
               <img
-                class="portrait-anime"
+                class="portrait-transformed"
                 src="img/glaucia-ferreira-anime.png"
                 alt=""
                 aria-hidden="true"
@@ -96,23 +114,60 @@
               <span class="transform-hint" aria-hidden="true">Activar ki saiyajin</span>
             </button>
             <p class="role">Desarrollador/a · Rol a definir</p>
-            <h3>Glaucia Ferreira</h3><p>Perfil personal con información provisoria.</p>
+            <h3>Glaucia Ferreira</h3>
+            <p>Perfil personal con información provisoria.</p>
             <a class="card-link" href="glaucia-ferreira.html">Ver perfil <span aria-hidden="true">→</span></a>
           </article>
           <article class="member-card">
-            <div class="member-photo">
-              <img src="img/avatar-placeholder.svg" alt="Foto provisoria de Ignacio Grosman">
-            </div>
+            <button
+              class="member-photo member-photo-transform"
+              type="button"
+              data-member-name="Ignacio"
+              aria-pressed="false"
+              aria-label="Activar ki saiyajin de Ignacio"
+            >
+              <img
+                class="portrait-base"
+                src="img/avatar-placeholder.svg"
+                alt="Foto provisoria de Ignacio Grosman"
+              >
+              <img
+                class="portrait-transformed"
+                src="img/avatar-placeholder.svg"
+                alt=""
+                aria-hidden="true"
+              >
+              <span class="transform-hint" aria-hidden="true">Activar ki saiyajin</span>
+            </button>
             <p class="role">Desarrollador/a · Rol a definir</p>
-            <h3>Ignacio Grosman</h3><p>Perfil personal con información provisoria.</p>
+            <h3>Ignacio Grosman</h3>
+            <p>Perfil personal con información provisoria.</p>
             <a class="card-link" href="ignacio-grosman.html">Ver perfil <span aria-hidden="true">→</span></a>
           </article>
           <article class="member-card">
-            <div class="member-photo">
-              <img src="img/avatar-placeholder.svg" alt="Foto provisoria de Andrea Maslucan Moreno">
-            </div>
+            <button
+              class="member-photo member-photo-transform"
+              type="button"
+              data-member-name="Andrea"
+              aria-pressed="false"
+              aria-label="Activar ki saiyajin de Andrea"
+            >
+              <img
+                class="portrait-base"
+                src="img/avatar-placeholder.svg"
+                alt="Foto provisoria de Andrea Maslucan Moreno"
+              >
+              <img
+                class="portrait-transformed"
+                src="img/avatar-placeholder.svg"
+                alt=""
+                aria-hidden="true"
+              >
+              <span class="transform-hint" aria-hidden="true">Activar ki saiyajin</span>
+            </button>
             <p class="role">Desarrollador/a · Rol a definir</p>
-            <h3>Andrea Maslucan Moreno</h3><p>Perfil personal con información provisoria.</p>
+            <h3>Andrea Maslucan Moreno</h3>
+            <p>Perfil personal con información provisoria.</p>
             <a class="card-link" href="andrea-maslucan-moreno.html">Ver perfil <span aria-hidden="true">→</span></a>
           </article>
         </div>

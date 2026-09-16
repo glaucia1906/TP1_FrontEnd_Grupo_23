@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" role="img" aria-labelledby="title description">
+  <title id="title">Portada provisoria de disco</title>
+  <desc id="description">Marcador visual de DragonByte para un disco pendiente.</desc>
+  <rect width="600" height="900" fill="#10182c"/>
+  <rect x="42" y="42" width="516" height="816" rx="24" fill="#17223b" stroke="#49e5ff" stroke-width="4" stroke-dasharray="18 14"/>
+  <circle cx="300" cy="370" r="112" fill="#070b18" stroke="#ff8a18" stroke-width="10"/>
+  <circle cx="300" cy="370" r="35" fill="#ffd84d"/>
+  <circle cx="300" cy="370" r="76" fill="none" stroke="#49e5ff" stroke-width="3" opacity=".6"/>
+  <text x="300" y="570" fill="#f6f8ff" font-family="Arial, sans-serif" font-size="42" font-weight="700" text-anchor="middle">DISCO</text>
+  <text x="300" y="625" fill="#aeb9d5" font-family="Arial, sans-serif" font-size="25" text-anchor="middle">PORTADA PENDIENTE</text>
+</svg>
