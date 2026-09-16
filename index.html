@@ -11,8 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="css/styles.css?v=4">
-    <script src="js/main.js" defer></script>
+    <link rel="stylesheet" href="css/styles.css?v=7">
+    <script src="js/main.js?v=2" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -75,9 +75,26 @@
             <a class="card-link" href="sebastian-fernandez.html">Ver perfil <span aria-hidden="true">→</span></a>
           </article>
           <article class="member-card">
-            <div class="member-photo">
-              <img src="img/avatar-placeholder.svg" alt="Foto provisoria de Glaucia Ferreira">
-            </div>
+            <button
+              id="glaucia-transform"
+              class="member-photo member-photo-transform"
+              type="button"
+              aria-pressed="false"
+              aria-label="Activar ki saiyajin de Glaucia"
+            >
+              <img
+                class="portrait-real"
+                src="img/glaucia-ferreira.jpeg"
+                alt="Glaucia Ferreira"
+              >
+              <img
+                class="portrait-anime"
+                src="img/glaucia-ferreira-anime.png"
+                alt=""
+                aria-hidden="true"
+              >
+              <span class="transform-hint" aria-hidden="true">Activar ki saiyajin</span>
+            </button>
             <p class="role">Desarrollador/a · Rol a definir</p>
             <h3>Glaucia Ferreira</h3><p>Perfil personal con información provisoria.</p>
             <a class="card-link" href="glaucia-ferreira.html">Ver perfil <span aria-hidden="true">→</span></a>
