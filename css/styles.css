@@ -686,6 +686,11 @@ body.powered {
   background: var(--surface);
 }
 
+.media-grid-albums .media-card img {
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
 .media-card h3 {
   min-height: 58px;
   margin: 0;
