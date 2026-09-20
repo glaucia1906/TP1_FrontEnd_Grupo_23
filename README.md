@@ -6,7 +6,7 @@ Sitio web grupal realizado para Desarrollo de Sistemas Web(Frontend).
 
 - Sebastián Fernández — [GitHub pendiente](#)
 - Glaucia Ferreira — [GitHub pendiente](#)
-- Ignacio Grosman — [GitHub pendiente](#)
+- Ignacio Grosman — [GitHub](https://github.com/IgnacioGrosman735)
 - Andrea Maslucan Moreno — [GitHub pendiente](#)
 
 ## Tecnologías

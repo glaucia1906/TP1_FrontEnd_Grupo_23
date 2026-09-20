@@ -1,0 +1,32 @@
+[
+  {
+    "name": "led-zeppelin-iv",
+    "source": "https://music.apple.com/us/album/led-zeppelin-iv-remastered/580708175?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5c/15/9b/5c159b27-95ca-b9a7-84e3-28e795fffd39/dj.kvkrpptq.jpg/600x600bb.jpg"
+  },
+  {
+    "name": "metallica-master-of-puppets",
+    "source": "https://music.apple.com/us/album/master-of-puppets-expanded-edition/1275551221?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/ed/ee/7f/edee7f18-85b6-ebb4-0620-89cbe56fe205/858978005554.png/600x600bb.jpg"
+  },
+  {
+    "name": "pappos-blues-volumen-1",
+    "source": "https://music.apple.com/us/album/pappos-blues-vol-1/1716989701?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/55/30/d3/5530d35d-32c7-ac17-c61a-6e043fe577f6/43193dce-fa00-4dda-a39d-504e2e04d321.jpg/600x600bb.jpg"
+  },
+  {
+    "name": "acdc-stiff-upper-lip",
+    "source": "https://music.apple.com/us/album/stiff-upper-lip/574051604?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/09/2c/46/092c46ea-c7a7-7ae9-bbfb-48ef0e972de4/dj.nctcpcnf.jpg/600x600bb.jpg"
+  },
+  {
+    "name": "divididos-la-era-de-la-boludez",
+    "source": "https://www.deezer.com/album/675906",
+    "image": "https://cdn-images.dzcdn.net/images/cover/a2ff867901c92d59a62657be17769b53/1000x1000-000000-80-0-0.jpg"
+  },
+  {
+    "name": "sumo-llegando-los-monos",
+    "source": "https://music.apple.com/us/album/llegando-los-monos/321858252?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music/8a/f3/b0/mzi.dsuwrspf.jpg/600x600bb.jpg"
+  }
+]

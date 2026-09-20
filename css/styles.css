@@ -622,6 +622,10 @@ body.powered {
   object-position: center top;
 }
 
+.profile-card .profile-photo-ignacio {
+  aspect-ratio: 1 / 1;
+}
+
 .profile-card h1 {
   font-size: clamp(2rem, 4vw, 3.4rem);
 }
@@ -684,6 +688,11 @@ body.powered {
   aspect-ratio: 2 / 3;
   object-fit: cover;
   background: var(--surface);
+}
+
+.media-grid-fit .media-card img {
+  object-fit: contain;
+  padding: 6px;
 }
 
 .media-card h3 {
