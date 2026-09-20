@@ -8,6 +8,8 @@ Sitio web grupal realizado para Desarrollo de Sistemas Web(Frontend).
 - Glaucia Ferreira — [GitHub pendiente](#)
 - Ignacio Grosman — [GitHub pendiente](#)
 - Andrea Maslucan Moreno — [GitHub](https://github.com/andreamm-lab)
+- Ignacio Grosman — [GitHub](https://github.com/IgnacioGrosman735)
+- Andrea Maslucan Moreno — [GitHub pendiente](#)
 
 ## Tecnologías
 

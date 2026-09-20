@@ -1257,6 +1257,10 @@ body.log-dialog-open {
   object-position: center top;
 }
 
+.profile-card .profile-photo-ignacio {
+  aspect-ratio: 1 / 1;
+}
+
 .profile-card h1 {
   font-size: clamp(2rem, 4vw, 3.4rem);
 }
