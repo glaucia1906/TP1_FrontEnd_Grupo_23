@@ -11,11 +11,11 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="css/styles.css?v=17">
-    <script src="js/main.js?v=9" defer></script>
+    <link rel="stylesheet" href="css/styles.css?v=23">
+    <script src="js/main.js?v=11" defer></script>
   </head>
   <body>
-    <header class="site-header">
+    <header id="inicio-bitacora" class="site-header" tabindex="-1">
       <a class="brand" href="index.html">
         <span class="brand-mark">DB</span>
         <span>DRAGONBYTE</span>
@@ -74,8 +74,25 @@
       </nav>
       <p id="log-status" class="log-status" role="status"></p>
 
+      <div id="log-filters" class="log-filters" role="group" aria-label="Filtrar y ordenar eventos" hidden>
+        <div class="log-field">
+          <label for="log-filter-date">Fecha del evento</label>
+          <select id="log-filter-date" aria-controls="log-entries">
+            <option value="">Todas las fechas</option>
+          </select>
+        </div>
+        <div class="log-field">
+          <label for="log-sort-order">Orden de los eventos</label>
+          <select id="log-sort-order" aria-controls="log-entries">
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
+          </select>
+        </div>
+        <p id="log-filter-summary" class="log-filter-summary" role="status" aria-live="polite" aria-atomic="true"></p>
+      </div>
+
       <section id="log-entries" class="timeline" aria-label="Entradas de la bitácora">
-        <article class="log-entry">
+        <article class="log-entry" data-event-date="2026-09-04">
           <div class="log-date">
             <span>01</span>
             <small>Inicio</small>
@@ -91,7 +108,7 @@
           </div>
         </article>
 
-        <article class="log-entry">
+        <article class="log-entry" data-event-date="2026-09-07">
           <div class="log-date">
             <span>02</span>
             <small>Diseño</small>
@@ -116,7 +133,7 @@
           </div>
         </article>
 
-        <article class="log-entry">
+        <article class="log-entry" data-event-date="2026-09-11">
           <div class="log-date">
             <span>03</span>
             <small>Revisión</small>
@@ -141,7 +158,7 @@
           </div>
         </article>
 
-        <article class="log-entry">
+        <article class="log-entry" data-event-date="2026-09-15">
           <div class="log-date">
             <span>04</span>
             <small>Integración</small>
@@ -166,7 +183,7 @@
           </div>
         </article>
 
-        <article class="log-entry">
+        <article class="log-entry" data-event-date="2026-09-16">
           <div class="log-date">
             <span>05</span>
             <small>Estilos</small>
@@ -251,10 +268,26 @@
 
       <div class="page-actions">
         <a class="button button-secondary" href="index.html">← Volver al inicio</a>
+        <button
+          id="log-add-event"
+          class="button button-primary log-add-event"
+          type="button"
+          aria-haspopup="dialog"
+          aria-controls="log-dialog"
+        >Agregar Evento</button>
       </div>
     </main>
 
-    <footer class="site-footer">
+    <a
+      class="button button-primary back-to-top"
+      href="#inicio-bitacora"
+      aria-label="Volver arriba"
+      title="Volver arriba"
+    >
+      <span aria-hidden="true">&#8593;</span>
+    </a>
+
+    <footer class="site-footer bitacora-footer">
       <p>DragonByte · Bitácora de desarrollo</p>
       <a href="index.html">Inicio</a>
     </footer>

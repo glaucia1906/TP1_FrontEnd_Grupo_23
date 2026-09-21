@@ -122,9 +122,13 @@ function initializeLogbook() {
   if (!entries || !timeline || !dialog || !form) return;
 
   const events = timeline.querySelector('.log-timeline-events');
-  const addButton = timeline.querySelector('.log-timeline-add');
+  const addButtons = document.querySelectorAll('.log-timeline-add, #log-add-event');
   const addItem = timeline.querySelector('.log-timeline-action');
   const status = document.querySelector('#log-status');
+  const filters = document.querySelector('#log-filters');
+  const dateFilter = document.querySelector('#log-filter-date');
+  const sortOrder = document.querySelector('#log-sort-order');
+  const filterSummary = document.querySelector('#log-filter-summary');
   const storageKey = 'dragonbyte-logbook-v1';
   const eventTypes = ['Inicio', 'Revisión', 'Diseño', 'Integración', 'Desarrollo'];
   const textLimits = { title: 120, description: 3000, decisions: 2000, nextStep: 2000 };
@@ -152,6 +156,7 @@ function initializeLogbook() {
   function addEntryCard(entry) {
     const card = document.createElement('article');
     card.className = 'log-entry';
+    card.dataset.eventDate = entry.date;
     const badge = document.createElement('div');
     badge.className = 'log-date';
     badge.append(createTextElement('span', formatNumber(entry.number)), createTextElement('small', entry.type));
@@ -179,6 +184,7 @@ function initializeLogbook() {
       const title = card.querySelector('h2').textContent;
       card.id = `evento-${number}`;
       card.tabIndex = -1;
+      if (card.hidden) return;
       const item = document.createElement('li');
       const link = document.createElement('a');
       link.className = 'log-timeline-link';
@@ -189,6 +195,39 @@ function initializeLogbook() {
       item.append(link);
       events.insertBefore(item, addItem);
     });
+  }
+
+  function updateDateFilter() {
+    const selectedDate = dateFilter.value;
+    const dates = [...new Set(Array.from(entries.querySelectorAll('.log-entry'),
+      (card) => card.dataset.eventDate))].sort().reverse();
+    const allDates = createTextElement('option', 'Todas las fechas');
+    allDates.value = '';
+    dateFilter.replaceChildren(allDates);
+    dates.forEach((date) => {
+      const [year, month, day] = date.split('-');
+      const option = createTextElement('option', `${day}/${month}/${year}`);
+      option.value = date;
+      dateFilter.append(option);
+    });
+    dateFilter.value = dates.includes(selectedDate) ? selectedDate : '';
+  }
+
+  function applyFilters() {
+    const cards = Array.from(entries.querySelectorAll('.log-entry'));
+    const direction = sortOrder.value === 'desc' ? -1 : 1;
+    cards.sort((a, b) => direction * (
+      Number(a.querySelector('.log-date span').textContent) -
+      Number(b.querySelector('.log-date span').textContent)
+    ));
+    let visibleCount = 0;
+    cards.forEach((card) => {
+      card.hidden = Boolean(dateFilter.value && card.dataset.eventDate !== dateFilter.value);
+      if (!card.hidden) visibleCount += 1;
+      entries.append(card);
+    });
+    filterSummary.textContent = `${visibleCount} de ${cards.length} eventos`;
+    updateTimeline();
   }
 
   function nextNumber() {
@@ -210,8 +249,12 @@ function initializeLogbook() {
     status.textContent = 'No se pudieron recuperar las entradas guardadas en este navegador.';
   }
 
-  updateTimeline();
+  updateDateFilter();
+  applyFilters();
   timeline.hidden = false;
+  filters.hidden = false;
+  dateFilter.addEventListener('change', applyFilters);
+  sortOrder.addEventListener('change', applyFilters);
 
   events.addEventListener('click', (event) => {
     const link = event.target.closest('a');
@@ -219,7 +262,7 @@ function initializeLogbook() {
     document.getElementById(link.hash.slice(1))?.focus({ preventScroll: true });
   });
 
-  addButton.addEventListener('click', () => {
+  function openLogDialog() {
     form.reset();
     Object.keys(textLimits).forEach((name) => form.elements.namedItem(name).setCustomValidity(''));
     form.elements.namedItem('number').value = formatNumber(nextNumber());
@@ -228,7 +271,9 @@ function initializeLogbook() {
       `${today.getFullYear()}-${formatNumber(today.getMonth() + 1)}-${formatNumber(today.getDate())}`;
     dialog.showModal();
     document.body.classList.add('log-dialog-open');
-  });
+  }
+
+  addButtons.forEach((button) => button.addEventListener('click', openLogDialog));
 
   dialog.querySelector('.log-dialog-close').addEventListener('click', () => dialog.close());
   document.querySelector('#log-cancel').addEventListener('click', () => dialog.close());
@@ -268,11 +313,15 @@ function initializeLogbook() {
       persisted = false;
     }
     const card = addEntryCard(entry);
-    updateTimeline();
+    updateDateFilter();
+    const resetDateFilter = dateFilter.value && dateFilter.value !== entry.date;
+    if (resetDateFilter) dateFilter.value = '';
+    applyFilters();
     dialog.close();
     status.textContent = persisted
       ? `Evento ${formatNumber(entry.number)} publicado y guardado en este navegador.`
       : `Evento ${formatNumber(entry.number)} publicado solo en esta sesión. No se pudo guardar en este navegador; se perderá al recargar.`;
+    if (resetDateFilter) status.textContent += ' Se muestran todas las fechas para ver la nueva entrada.';
     card.focus({ preventScroll: true });
     card.scrollIntoView({ block: 'start' });
   });
