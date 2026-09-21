@@ -47,6 +47,8 @@ button {
 }
 
 .site-header {
+  position: relative;
+  z-index: 5;
   min-height: 82px;
   border-bottom: 1px solid var(--border);
 }
@@ -79,16 +81,74 @@ button {
   gap: 8px;
 }
 
-.main-nav a {
+.main-nav a, .nav-dropdown-toggle {
+  display: block;
   padding: 9px 14px;
   color: var(--muted);
   text-decoration: none;
   border-radius: 6px;
+  transition: color .2s ease, background-color .2s ease;
 }
 
-.main-nav a:hover, .main-nav a.is-active {
+.main-nav .is-active {
   color: var(--text);
   background: var(--surface-2);
+}
+
+.main-nav a:hover, .main-nav a:focus-visible,
+.nav-dropdown-toggle:hover, .nav-dropdown-toggle:focus-visible,
+.nav-dropdown[open] > .nav-dropdown-toggle {
+  color: var(--orange);
+  background: var(--surface-2);
+}
+
+.main-nav a:focus-visible, .nav-dropdown-toggle:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.nav-dropdown-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.nav-dropdown-toggle::after {
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  content: "";
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.nav-dropdown[open] > .nav-dropdown-toggle::after {
+  transform: translateY(2px) rotate(225deg);
+}
+
+.nav-submenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 260px;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
 
 .menu-toggle {
@@ -100,7 +160,13 @@ button {
   border-radius: 6px;
 }
 
+.menu-toggle:hover, .menu-toggle:focus-visible {
+  color: var(--orange);
+}
+
 .hero {
+  position: relative;
+  isolation: isolate;
   width: min(1180px, calc(100% - 32px));
   min-height: 650px;
   margin: auto;
@@ -108,6 +174,11 @@ button {
   grid-template-columns: 1.15fr .85fr;
   align-items: center;
   gap: 50px;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
 }
 
 .eyebrow, .role {
@@ -186,6 +257,7 @@ h1 span {
 
 .energy-core {
   position: relative;
+  z-index: 1;
   display: grid;
   place-items: center;
   width: 100%;
@@ -194,6 +266,7 @@ h1 span {
   aspect-ratio: 1;
   margin: auto;
   isolation: isolate;
+  pointer-events: none;
 }
 
 .core {
@@ -322,6 +395,16 @@ h1 span {
 
 body:not(.powered) .energy-core {
   animation: pulse 1.4s ease-in-out infinite alternate;
+}
+
+body.powered .energy-core {
+  transform: translate(var(--flight-home-x, 0px), var(--flight-home-y, 0px)) scale(var(--flight-scale, 1));
+  animation: hero-flight 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+body.powered .hero-copy :is(h1, h1 span, p) {
+  text-shadow: 0 2px 4px var(--bg), 0 0 12px var(--bg);
 }
 
 .power-aura {
@@ -815,6 +898,24 @@ body.powered {
   }
 }
 
+@keyframes hero-flight {
+  0%, 100% {
+    transform: translate(var(--flight-home-x, 0px), var(--flight-home-y, 0px)) scale(var(--flight-scale, 1));
+  }
+  20% {
+    transform: translate(var(--flight-left, 0px), var(--flight-top, 0px)) scale(var(--flight-scale, 1));
+  }
+  40% {
+    transform: translate(var(--flight-right, 0px), var(--flight-bottom, 0px)) scale(var(--flight-scale, 1));
+  }
+  60% {
+    transform: translate(var(--flight-left, 0px), var(--flight-bottom, 0px)) scale(var(--flight-scale, 1));
+  }
+  80% {
+    transform: translate(var(--flight-right, 0px), var(--flight-top, 0px)) scale(var(--flight-scale, 1));
+  }
+}
+
 @keyframes flame-surge {
   from {
     transform: scaleX(.97) scaleY(.96) rotate(-2deg);
@@ -892,10 +993,13 @@ body.powered {
   .main-nav {
     position: absolute;
     top: 72px;
-    right: 16px;
+    right: 0;
     z-index: 4;
     display: none;
     min-width: 180px;
+    max-width: 100%;
+    max-height: calc(100dvh - 88px);
+    overflow-y: auto;
     padding: 10px;
     border: 1px solid var(--border);
     background: var(--surface);
@@ -903,6 +1007,13 @@ body.powered {
   }
   .main-nav.is-open {
     display: grid;
+  }
+  .nav-submenu {
+    position: static;
+    width: auto;
+    margin-top: 8px;
+    padding: 4px;
+    box-shadow: none;
   }
   .team-grid, .favorites {
     grid-template-columns: 1fr;
@@ -952,6 +1063,9 @@ body.powered {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  body.powered .energy-core {
+    will-change: auto;
   }
   *, *::before, *::after {
     animation: none !important;

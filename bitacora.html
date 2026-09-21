@@ -11,8 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="css/styles.css?v=2">
-    <script src="js/main.js" defer></script>
+    <link rel="stylesheet" href="css/styles.css?v=14">
+    <script src="js/main.js?v=7" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -30,7 +30,16 @@
       </button>
       <nav id="main-menu" class="main-nav" aria-label="Navegación principal">
         <a href="index.html">Inicio</a>
-        <a href="index.html#equipo">Equipo</a>
+        <details class="nav-dropdown">
+          <summary class="nav-dropdown-toggle">Equipo</summary>
+          <ul class="nav-submenu">
+            <li><a href="index.html#equipo">Ver equipo</a></li>
+            <li><a href="sebastian-fernandez.html">Sebastián Fernández</a></li>
+            <li><a href="glaucia-ferreira.html">Glaucia Ferreira</a></li>
+            <li><a href="ignacio-grosman.html">Ignacio Grosman</a></li>
+            <li><a href="andrea-maslucan-moreno.html">Andrea Maslucan Moreno</a></li>
+          </ul>
+        </details>
         <a class="is-active" href="bitacora.html">Bitácora</a>
       </nav>
     </header>
