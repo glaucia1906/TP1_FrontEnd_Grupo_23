@@ -11,8 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="css/styles.css?v=10">
-    <script src="js/main.js?v=3" defer></script>
+    <link rel="stylesheet" href="css/styles.css?v=11">
+    <script src="js/main.js?v=4" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -39,12 +39,36 @@
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="#equipo">Conocer al equipo</a>
-            <button id="power-button" class="button button-secondary" type="button">Activar poder</button>
+            <button id="power-button" class="button button-secondary" type="button" aria-pressed="false">Activar poder</button>
           </div>
           <p id="power-message" class="power-message" aria-live="polite">Nivel de energía: estable.</p>
         </div>
         <div class="energy-core" aria-hidden="true">
           <div class="orbit orbit-one"></div>
+          <div class="power-aura">
+            <svg class="power-flames" viewBox="0 0 430 430" fill="none" focusable="false">
+              <defs>
+                <linearGradient id="flame-outer" x1="215" y1="355" x2="215" y2="25" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ff4d00" stop-opacity=".15"/>
+                  <stop offset=".35" stop-color="#ff6a00"/>
+                  <stop offset=".7" stop-color="#ffb52e"/>
+                  <stop offset="1" stop-color="#fff4ba"/>
+                </linearGradient>
+                <linearGradient id="flame-inner" x1="215" y1="335" x2="215" y2="65" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ff8a18" stop-opacity=".3"/>
+                  <stop offset=".4" stop-color="#ffd84d"/>
+                  <stop offset="1" stop-color="#fffce9"/>
+                </linearGradient>
+              </defs>
+              <path class="flame flame-outer" fill="url(#flame-outer)" d="M215 355 C139 361 79 307 87 252 C90 228 76 207 66 189 C96 196 108 216 115 230 C106 179 127 164 110 123 C144 136 157 163 160 181 C169 134 190 121 184 76 C198 87 207 103 207 122 C232 90 247 62 237 25 C273 57 283 100 265 144 C291 126 299 107 299 88 C322 125 309 168 296 193 C321 181 337 165 337 142 C358 180 344 211 328 237 C351 231 359 211 360 200 C386 273 322 355 215 355 Z"/>
+              <path class="flame flame-inner" fill="url(#flame-inner)" d="M215 335 C153 340 113 299 120 249 C124 231 121 214 114 201 C136 209 147 226 149 240 C141 193 170 170 161 139 C180 152 192 176 187 198 C201 164 231 146 228 101 C250 126 254 156 241 187 C262 173 273 152 273 136 C289 169 280 204 266 223 C288 211 302 190 302 177 C320 212 303 234 302 251 C323 243 331 231 332 224 C339 282 292 335 215 335 Z"/>
+              <path class="flame flame-highlight" stroke="#fff5bf" stroke-width="3" stroke-linecap="round" d="M106 273 C91 247 108 227 99 214 M178 159 C171 138 194 121 189 106 M276 165 C299 145 293 125 299 115 M326 294 C346 276 337 254 347 243"/>
+            </svg>
+            <span class="power-ember"></span>
+            <span class="power-ember"></span>
+            <span class="power-ember"></span>
+            <span class="power-ember"></span>
+          </div>
           <div class="core">
             <span class="core-node core-node-one"></span>
             <span class="core-node core-node-two"></span>

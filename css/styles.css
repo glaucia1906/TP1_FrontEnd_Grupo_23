@@ -320,8 +320,107 @@ h1 span {
   right: 5%;
 }
 
-body.powered .energy-core {
+body:not(.powered) .energy-core {
   animation: pulse 1.4s ease-in-out infinite alternate;
+}
+
+.power-aura {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: none;
+  pointer-events: none;
+}
+
+body.powered .power-aura {
+  display: block;
+}
+
+.power-aura::before, .power-aura::after {
+  position: absolute;
+  border-radius: 50%;
+  content: "";
+}
+
+.power-aura::before {
+  inset: 8%;
+  background: radial-gradient(ellipse, rgba(255, 246, 178, .6) 15%, rgba(255, 174, 24, .36) 35%, rgba(255, 72, 0, .16) 52%, transparent 70%);
+}
+
+.power-aura::after {
+  inset: 24%;
+  border: 2px solid rgba(255, 235, 151, .7);
+  box-shadow: 0 0 18px rgba(255, 138, 24, .5), inset 0 0 14px rgba(255, 216, 77, .4);
+  animation: power-wave 1.8s ease-out infinite;
+}
+
+.power-flames {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 6px rgba(255, 180, 40, .85)) drop-shadow(0 0 16px rgba(255, 83, 0, .6));
+}
+
+.flame {
+  transform-box: fill-box;
+  transform-origin: 50% 90%;
+  animation: flame-surge 1.1s ease-in-out infinite alternate;
+}
+
+.flame-inner {
+  animation-duration: .8s;
+  animation-delay: -.4s;
+  animation-direction: alternate-reverse;
+}
+
+.flame-highlight {
+  animation-duration: 1.3s;
+  animation-delay: -.6s;
+}
+
+.power-ember {
+  position: absolute;
+  left: 24%;
+  top: 48%;
+  width: 4px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff3b0;
+  box-shadow: 0 0 7px var(--yellow), 0 0 15px var(--orange);
+  --ember-drift: -12px;
+  animation: ember-rise 1.6s ease-out infinite;
+}
+
+.power-ember:nth-of-type(2) {
+  left: 72%;
+  top: 44%;
+  --ember-drift: 16px;
+  animation-delay: -.7s;
+}
+
+.power-ember:nth-of-type(3) {
+  left: 42%;
+  top: 25%;
+  --ember-drift: -8px;
+  animation-delay: -1.2s;
+}
+
+.power-ember:nth-of-type(4) {
+  left: 64%;
+  top: 29%;
+  --ember-drift: 10px;
+  animation-delay: -.3s;
+}
+
+body.powered .core {
+  box-shadow:
+    inset -16px -18px 30px rgba(104, 25, 0, .26),
+    inset 8px 8px 20px rgba(255, 239, 132, .35),
+    0 0 12px #fff3b0,
+    0 0 38px var(--yellow),
+    0 0 85px rgba(255, 102, 0, .7);
 }
 
 body.powered {
@@ -713,6 +812,42 @@ body.powered {
   to {
     filter: brightness(1.2);
     transform: scale(1.025);
+  }
+}
+
+@keyframes flame-surge {
+  from {
+    transform: scaleX(.97) scaleY(.96) rotate(-2deg);
+    opacity: .8;
+  }
+  to {
+    transform: scaleX(1.03) scaleY(1.04) rotate(2deg);
+    opacity: 1;
+  }
+}
+
+@keyframes power-wave {
+  from {
+    transform: scale(.9);
+    opacity: .65;
+  }
+  to {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+@keyframes ember-rise {
+  0% {
+    transform: translate(0, 12px) scale(.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--ember-drift), -65px) scale(.2);
+    opacity: 0;
   }
 }
 

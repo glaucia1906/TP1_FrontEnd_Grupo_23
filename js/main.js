@@ -11,6 +11,7 @@ const powerMessage = document.querySelector('#power-message');
 
 powerButton?.addEventListener('click', () => {
   const powered = document.body.classList.toggle('powered');
+  powerButton.setAttribute('aria-pressed', String(powered));
   powerButton.textContent = powered ? 'Desactivar poder' : 'Activar poder';
   powerMessage.textContent = powered
     ? 'Nivel de energía: ¡DragonByte al máximo!'
