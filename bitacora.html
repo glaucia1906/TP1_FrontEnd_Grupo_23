@@ -11,11 +11,11 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="css/styles.css?v=2">
-    <script src="js/main.js" defer></script>
+    <link rel="stylesheet" href="css/styles.css?v=23">
+    <script src="js/main.js?v=11" defer></script>
   </head>
   <body>
-    <header class="site-header">
+    <header id="inicio-bitacora" class="site-header" tabindex="-1">
       <a class="brand" href="index.html">
         <span class="brand-mark">DB</span>
         <span>DRAGONBYTE</span>
@@ -30,23 +30,69 @@
       </button>
       <nav id="main-menu" class="main-nav" aria-label="Navegación principal">
         <a href="index.html">Inicio</a>
-        <a href="index.html#equipo">Equipo</a>
+        <details class="nav-dropdown">
+          <summary class="nav-dropdown-toggle">Equipo</summary>
+          <ul class="nav-submenu">
+            <li><a href="index.html#equipo">Ver equipo</a></li>
+            <li><a href="sebastian-fernandez.html">Sebastián Fernández</a></li>
+            <li><a href="glaucia-ferreira.html">Glaucia Ferreira</a></li>
+            <li><a href="ignacio-grosman.html">Ignacio Grosman</a></li>
+            <li><a href="andrea-maslucan-moreno.html">Andrea Maslucan Moreno</a></li>
+          </ul>
+        </details>
         <a class="is-active" href="bitacora.html">Bitácora</a>
       </nav>
     </header>
 
     <main class="inner-main">
-      <header class="page-intro">
+      <header class="page-intro bitacora-intro">
         <p class="eyebrow">REGISTRO DE MISIÓN</p>
         <h1>Bitácora del proyecto</h1>
         <p>
-          Decisiones, avances, dificultades y aprendizajes del equipo. Se completar una entrada en cada
+          Decisiones, avances, dificultades y aprendizajes del equipo. Se completa una entrada en cada
           jornada de trabajo.
         </p>
       </header>
 
-      <section class="timeline" aria-label="Entradas de la bitácora">
-        <article class="log-entry">
+      <nav class="log-timeline" aria-label="Línea temporal de la bitácora" hidden>
+        <div class="log-timeline-scroll">
+          <ol class="log-timeline-events">
+            <li class="log-timeline-action">
+              <button
+                class="log-timeline-add"
+                type="button"
+                aria-label="Agregar una nueva entrada"
+                aria-haspopup="dialog"
+                aria-controls="log-dialog"
+                title="Agregar una nueva entrada"
+              >
+                <span aria-hidden="true">+</span>
+              </button>
+            </li>
+          </ol>
+        </div>
+      </nav>
+      <p id="log-status" class="log-status" role="status"></p>
+
+      <div id="log-filters" class="log-filters" role="group" aria-label="Filtrar y ordenar eventos" hidden>
+        <div class="log-field">
+          <label for="log-filter-date">Fecha del evento</label>
+          <select id="log-filter-date" aria-controls="log-entries">
+            <option value="">Todas las fechas</option>
+          </select>
+        </div>
+        <div class="log-field">
+          <label for="log-sort-order">Orden de los eventos</label>
+          <select id="log-sort-order" aria-controls="log-entries">
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
+          </select>
+        </div>
+        <p id="log-filter-summary" class="log-filter-summary" role="status" aria-live="polite" aria-atomic="true"></p>
+      </div>
+
+      <section id="log-entries" class="timeline" aria-label="Entradas de la bitácora">
+        <article class="log-entry" data-event-date="2026-09-04">
           <div class="log-date">
             <span>01</span>
             <small>Inicio</small>
@@ -62,7 +108,7 @@
           </div>
         </article>
 
-        <article class="log-entry">
+        <article class="log-entry" data-event-date="2026-09-07">
           <div class="log-date">
             <span>02</span>
             <small>Diseño</small>
@@ -87,7 +133,7 @@
           </div>
         </article>
 
-        <article class="log-entry">
+        <article class="log-entry" data-event-date="2026-09-11">
           <div class="log-date">
             <span>03</span>
             <small>Revisión</small>
@@ -112,7 +158,7 @@
           </div>
         </article>
 
-        <article class="log-entry">
+        <article class="log-entry" data-event-date="2026-09-15">
           <div class="log-date">
             <span>04</span>
             <small>Integración</small>
@@ -137,7 +183,7 @@
           </div>
         </article>
 
-        <article class="log-entry">
+        <article class="log-entry" data-event-date="2026-09-16">
           <div class="log-date">
             <span>05</span>
             <small>Estilos</small>
@@ -162,25 +208,86 @@
           </div>
         </article>
 
-        <article class="log-entry is-placeholder">
-          <div class="log-date">
-            <span>06</span>
-            <small>Próxima</small>
-          </div>
-          <div>
-            <p class="role">Fecha: pendiente</p>
-            <h2>Título de la próxima entrada</h2>
-            <p>Describir qué se hizo, quiénes participaron, qué problema apareció y cómo se resolvió.</p>
-          </div>
-        </article>
       </section>
+
+      <dialog id="log-dialog" class="log-dialog" aria-labelledby="log-dialog-title" aria-describedby="log-form-note">
+        <div class="log-dialog-header">
+          <div>
+            <p class="eyebrow">REGISTRO DE MISIÓN</p>
+            <h2 id="log-dialog-title">Nueva entrada</h2>
+          </div>
+          <button class="log-dialog-close" type="button" aria-label="Cerrar formulario">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form id="log-form" class="log-form">
+          <div class="log-form-row">
+            <div class="log-field">
+              <label for="log-number">Número del evento</label>
+              <input id="log-number" name="number" type="text" readonly>
+            </div>
+            <div class="log-field">
+              <label for="log-type">Tipo de evento</label>
+              <select id="log-type" name="type" required autofocus>
+                <option value="" disabled selected>Seleccionar tipo</option>
+                <option>Inicio</option>
+                <option>Revisión</option>
+                <option>Diseño</option>
+                <option>Integración</option>
+                <option>Desarrollo</option>
+              </select>
+            </div>
+            <div class="log-field">
+              <label for="log-date">Fecha</label>
+              <input id="log-date" name="date" type="date" min="0001-01-01" max="9999-12-31" required>
+            </div>
+          </div>
+          <div class="log-field">
+            <label for="log-title">Título del evento</label>
+            <input id="log-title" name="title" type="text" maxlength="120" placeholder="¿Qué logró el equipo hoy?" required>
+          </div>
+          <div class="log-field">
+            <label for="log-description">Descripción</label>
+            <textarea id="log-description" name="description" rows="3" maxlength="3000" placeholder="Contá los avances, las dificultades y los aprendizajes." required></textarea>
+          </div>
+          <div class="log-field">
+            <label for="log-decisions">Decisiones</label>
+            <textarea id="log-decisions" name="decisions" rows="2" maxlength="2000" placeholder="¿Qué decisiones tomaron?" required></textarea>
+          </div>
+          <div class="log-field">
+            <label for="log-next-step">Próximo paso</label>
+            <textarea id="log-next-step" name="nextStep" rows="2" maxlength="2000" placeholder="¿Cómo van a continuar?" required></textarea>
+          </div>
+          <p id="log-form-note" class="log-form-note">Las nuevas entradas se guardan en este navegador.</p>
+          <div class="log-form-actions">
+            <button class="button button-secondary" id="log-cancel" type="button">Cancelar</button>
+            <button class="button button-primary" type="submit">Publicar</button>
+          </div>
+        </form>
+      </dialog>
 
       <div class="page-actions">
         <a class="button button-secondary" href="index.html">← Volver al inicio</a>
+        <button
+          id="log-add-event"
+          class="button button-primary log-add-event"
+          type="button"
+          aria-haspopup="dialog"
+          aria-controls="log-dialog"
+        >Agregar Evento</button>
       </div>
     </main>
 
-    <footer class="site-footer">
+    <a
+      class="button button-primary back-to-top"
+      href="#inicio-bitacora"
+      aria-label="Volver arriba"
+      title="Volver arriba"
+    >
+      <span aria-hidden="true">&#8593;</span>
+    </a>
+
+    <footer class="site-footer bitacora-footer">
       <p>DragonByte · Bitácora de desarrollo</p>
       <a href="index.html">Inicio</a>
     </footer>

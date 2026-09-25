@@ -6,8 +6,8 @@ Sitio web grupal realizado para Desarrollo de Sistemas Web(Frontend).
 
 - Sebastián Fernández — [GitHub pendiente](#)
 - Glaucia Ferreira — [GitHub pendiente](#)
-- Ignacio Grosman — [GitHub](https://github.com/IgnacioGrosman735)
-- Andrea Maslucan Moreno — [GitHub pendiente](#)
+- Ignacio Grosman — [GitHub pendiente](#)
+- Andrea Maslucan Moreno — [GitHub](https://github.com/andreamm-lab)
 
 ## Tecnologías
 
@@ -50,6 +50,10 @@ dragonbyte/
 - Portada: el botón **Activar poder** cambia el estado visual y el mensaje del núcleo de energía.
 - Navegación: el menú se abre y cierra en pantallas pequeñas.
 - Perfiles: el botón **Generar desafío** propone un reto aleatorio de desarrollo.
+
+## Imágenes obtenidas mediante APIs
+
+En el perfil Andrea se usó [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/index.html) para obtener las portadas de discos y la [API PageImages de Wikipedia](https://www.mediawiki.org/wiki/Extension:PageImages) para los posters de películas. Las consultas son gratuitas y no requieren clave API. Las URLs obtenidas se incorporaron al HTML; la página carga las imágenes externas sin consultar las APIs en cada visita.
 
 ## Pendientes
 
