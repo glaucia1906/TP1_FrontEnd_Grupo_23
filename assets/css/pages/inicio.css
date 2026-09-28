@@ -6,6 +6,7 @@
   width: min(1180px, calc(100% - 32px));
   min-height: 560px;
   margin: auto;
+  padding-block: clamp(32px, 5vw, 64px);
   display: grid;
   grid-template-columns: 1.15fr .85fr;
   align-items: center;
@@ -477,7 +478,6 @@ body.powered {
     min-height: auto;
     grid-template-columns: 1fr;
     gap: 28px;
-    padding: 48px 0;
   }
 
   .energy-core {
@@ -508,10 +508,6 @@ body.powered {
   .hero,
   .section {
     width: min(100% - 22px, 1180px);
-  }
-
-  .hero {
-    padding: 32px 0;
   }
 
   .hero-actions .button {
