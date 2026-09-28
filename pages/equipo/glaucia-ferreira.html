@@ -14,7 +14,7 @@
     >
     <link rel="stylesheet" href="../../assets/css/base.css?v=1">
     <link rel="stylesheet" href="../../components/member-photo/member-photo.css?v=1">
-    <link rel="stylesheet" href="../../assets/css/pages/perfiles.css?v=1">
+    <link rel="stylesheet" href="../../assets/css/pages/perfiles.css?v=16">
     <link rel="stylesheet" href="../../components/challenge/challenge.css?v=1">
     <link rel="stylesheet" href="../../components/header/header.css?v=12">
     <link rel="stylesheet" href="../../components/footer/footer.css?v=1">
@@ -28,7 +28,7 @@
 
     <main class="inner-main">
       <div class="profile-shell">
-        <section class="profile-card">
+        <section class="profile-card" aria-labelledby="profile-name">
           <button
             class="member-photo member-photo-transform profile-photo profile-photo-glaucia"
             type="button"
@@ -50,7 +50,7 @@
             <span class="transform-hint" aria-hidden="true">Activar ki saiyajin</span>
           </button>
           <p class="eyebrow">PERFIL 02</p>
-          <h1>Glaucia Ferreira</h1>
+          <h1 id="profile-name">Glaucia Ferreira</h1>
           <p class="profile-meta profile-age">35 años</p>
           <p class="profile-meta profile-location">
             <img src="../../assets/img/iconos/ubicacion.webp" width="18" height="18" alt="" aria-hidden="true">
@@ -77,24 +77,26 @@
             <span>@glaucia1906</span>
           </a>
         </section>
-        <section class="profile-details profile-details-glaucia">
-          <h2>Habilidades</h2>
-          <ul class="chip-list">
-            <li>C#</li>
-            <li>.NET</li>
-            <li>SQL Server</li>
-            <li>Delphi</li>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>Git</li>
-            <li>Backend</li>
-            <li>Bases de datos</li>
-            <li>Trabajo en equipo</li>
-          </ul>
+        <div class="profile-details profile-details-glaucia">
+          <section class="profile-skills" aria-labelledby="skills-title">
+            <h2 id="skills-title">Habilidades</h2>
+            <ul class="chip-list">
+              <li>C#</li>
+              <li>.NET</li>
+              <li>SQL Server</li>
+              <li>Delphi</li>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Git</li>
+              <li>Backend</li>
+              <li>Bases de datos</li>
+              <li>Trabajo en equipo</li>
+            </ul>
+          </section>
           <div class="favorites">
-            <div>
-              <h2>Películas favoritas</h2>
+            <section class="favorites-group" aria-labelledby="movies-title">
+              <h2 id="movies-title">Películas favoritas</h2>
               <div class="media-grid">
                 <article class="media-card">
                   <a
@@ -115,7 +117,6 @@
                         <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
                         <path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4" fill="none" stroke="currentColor" stroke-width="2"></path>
                       </svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Harry Potter</h3>
@@ -139,7 +140,6 @@
                         <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
                         <path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4" fill="none" stroke="currentColor" stroke-width="2"></path>
                       </svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Alicia en el país de las maravillas</h3>
@@ -163,7 +163,6 @@
                         <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
                         <path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4" fill="none" stroke="currentColor" stroke-width="2"></path>
                       </svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Iron Man</h3>
@@ -187,7 +186,6 @@
                         <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
                         <path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4" fill="none" stroke="currentColor" stroke-width="2"></path>
                       </svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Star Wars</h3>
@@ -211,7 +209,6 @@
                         <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
                         <path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4" fill="none" stroke="currentColor" stroke-width="2"></path>
                       </svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>La vita è bella</h3>
@@ -235,16 +232,15 @@
                         <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
                         <path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4" fill="none" stroke="currentColor" stroke-width="2"></path>
                       </svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Jeux d'enfants</h3>
                 </article>
               </div>
-            </div>
-            <div>
-              <h2>Discos favoritos</h2>
-              <div class="media-grid">
+            </section>
+            <section class="favorites-group" aria-labelledby="albums-title">
+              <h2 id="albums-title">Discos favoritos</h2>
+              <div class="media-grid media-grid-albums">
                 <article class="media-card">
                   <a
                     class="media-artwork"
@@ -263,7 +259,6 @@
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                         <path d="m9 5 11 7-11 7Z" fill="currentColor"></path>
                       </svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>AC/DC — High Voltage</h3>
@@ -286,7 +281,6 @@
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                         <path d="m9 5 11 7-11 7Z" fill="currentColor"></path>
                       </svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Queen — A Night at the Opera</h3>
@@ -309,7 +303,6 @@
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                         <path d="m9 5 11 7-11 7Z" fill="currentColor"></path>
                       </svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Caramelos de Cianuro — Frisbee</h3>
@@ -332,7 +325,6 @@
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                         <path d="m9 5 11 7-11 7Z" fill="currentColor"></path>
                       </svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Avril Lavigne — Let Go</h3>
@@ -355,7 +347,6 @@
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                         <path d="m9 5 11 7-11 7Z" fill="currentColor"></path>
                       </svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Simple Plan — Still Not Getting Any...</h3>
@@ -378,22 +369,29 @@
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                         <path d="m9 5 11 7-11 7Z" fill="currentColor"></path>
                       </svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Rawayana — Licencia Para Ser Libre</h3>
                 </article>
               </div>
-            </div>
+            </section>
           </div>
-          <button id="challenge-button" class="button button-primary" type="button">Generar desafío</button>
-          <p id="challenge-result" class="challenge">Tu próximo desafío aparecerá acá.</p>
-        </section>
+          <div class="profile-challenge">
+            <button id="challenge-button" class="button button-primary" type="button">Generar desafío</button>
+            <p id="challenge-result" class="challenge">Tu próximo desafío aparecerá acá.</p>
+          </div>
+        </div>
       </div>
-      <div class="page-actions">
-        <a class="button button-secondary" href="sebastian-fernandez.html">← Perfil anterior</a>
-        <a class="button button-secondary" href="ignacio-grosman.html">Siguiente perfil →</a>
-      </div>
+      <nav class="page-actions profile-navigation" aria-label="Navegación entre perfiles">
+        <a class="button button-secondary profile-nav-previous" href="sebastian-fernandez.html">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 5-7 7 7 7M5 12h14"/></svg>
+          <span>Perfil anterior</span>
+        </a>
+        <a class="button button-secondary profile-nav-next" href="ignacio-grosman.html">
+          <span>Siguiente perfil</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 5 7 7-7 7M5 12h14"/></svg>
+        </a>
+      </nav>
     </main>
 
     <footer class="site-footer" data-site-footer></footer>

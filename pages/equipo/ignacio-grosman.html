@@ -14,7 +14,7 @@
     >
     <link rel="stylesheet" href="../../assets/css/base.css?v=1">
     <link rel="stylesheet" href="../../components/member-photo/member-photo.css?v=1">
-    <link rel="stylesheet" href="../../assets/css/pages/perfiles.css?v=1">
+    <link rel="stylesheet" href="../../assets/css/pages/perfiles.css?v=16">
     <link rel="stylesheet" href="../../components/challenge/challenge.css?v=1">
     <link rel="stylesheet" href="../../components/header/header.css?v=12">
     <link rel="stylesheet" href="../../components/footer/footer.css?v=1">
@@ -28,7 +28,7 @@
 
     <main class="inner-main">
       <div class="profile-shell">
-        <section class="profile-card">
+        <section class="profile-card" aria-labelledby="profile-name">
           <button
             class="member-photo member-photo-transform profile-photo profile-photo-ignacio"
             type="button"
@@ -50,7 +50,7 @@
             <span class="transform-hint" aria-hidden="true">Activar ki saiyajin</span>
           </button>
           <p class="eyebrow">PERFIL 03</p>
-          <h1>Ignacio Grosman</h1>
+          <h1 id="profile-name">Ignacio Grosman</h1>
           <p class="profile-meta profile-age">37 años</p>
           <p class="profile-meta profile-location">
             <img src="../../assets/img/iconos/ubicacion.webp" width="18" height="18" alt="" aria-hidden="true">
@@ -73,29 +73,30 @@
             <span>@IgnacioGrosman735</span>
           </a>
         </section>
-        <section class="profile-details">
-          <h2>Habilidades</h2>
-          <ul class="chip-list">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>TypeScript</li>
-            <li>Angular</li>
-            <li>C#</li>
-            <li>.NET</li>
-            <li>SQL</li>
-            <li>Trabajo en equipo</li>
-          </ul>
+        <div class="profile-details">
+          <section class="profile-skills" aria-labelledby="skills-title">
+            <h2 id="skills-title">Habilidades</h2>
+            <ul class="chip-list">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>TypeScript</li>
+              <li>Angular</li>
+              <li>C#</li>
+              <li>.NET</li>
+              <li>SQL</li>
+              <li>Trabajo en equipo</li>
+            </ul>
+          </section>
           <div class="favorites">
-            <div>
-              <h2>Películas favoritas</h2>
+            <section class="favorites-group" aria-labelledby="movies-title">
+              <h2 id="movies-title">Películas favoritas</h2>
               <div class="media-grid media-grid-fit">
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=vN-1Mup0UI0" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler de La naranja mecánica en YouTube (se abre en una pestaña nueva)" title="Ver tráiler de La naranja mecánica en YouTube">
                     <img src="../../assets/img/peliculas/la-naraja-mecanica.jpg" alt="Portada provisoria de la película 01 de Ignacio" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4"/></svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>La Naranaja Mecánica</h3>
@@ -105,7 +106,6 @@
                     <img src="../../assets/img/peliculas/nueve_reinas.jpg" alt="Portada provisoria de la película 02 de Ignacio" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4"/></svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Nueve Reinas</h3>
@@ -115,7 +115,6 @@
                     <img src="../../assets/img/peliculas/intrusos.jpg" alt="Portada provisoria de la película 03 de Ignacio" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4"/></svg>
-                      <span>Ver video</span>
                     </span>
                   </a>
                   <h3>Intrusos en el espectáculo</h3>
@@ -125,7 +124,6 @@
                     <img src="../../assets/img/peliculas/muñeca-brava.jpg" alt="Portada provisoria de la película 04 de Ignacio" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4"/></svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Muñeca Brava</h3>
@@ -135,7 +133,6 @@
                     <img src="../../assets/img/peliculas/primal.jpg" alt="Portada provisoria de la película 05 de Ignacio" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4"/></svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Primal</h3>
@@ -145,22 +142,20 @@
                     <img src="../../assets/img/peliculas/Rick-y-Morty.jpg" alt="Portada provisoria de la película 06 de Ignacio" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4"/></svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Rick and Morty</h3>
                 </article>
               </div>
-            </div>
-            <div>
-              <h2>Discos favoritos</h2>
-              <div class="media-grid media-grid-fit">
+            </section>
+            <section class="favorites-group" aria-labelledby="albums-title">
+              <h2 id="albums-title">Discos favoritos</h2>
+              <div class="media-grid media-grid-fit media-grid-albums">
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=0hLESLXqBLI" target="_blank" rel="noopener noreferrer" aria-label="Escuchar Led Zeppelin IV de Led Zeppelin en YouTube (se abre en una pestaña nueva)" title="Escuchar Led Zeppelin IV completo en YouTube">
                     <img src="../../assets/img/albums/led-zeppelin-iv.jpg" alt="Tapa del disco Led Zeppelin — Led Zeppelin IV (1971)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Led Zeppelin — Led Zeppelin IV (1971)</h3>
@@ -170,7 +165,6 @@
                     <img src="../../assets/img/albums/metallica-master-of-puppets.jpg" alt="Tapa del disco Metallica — Master of Puppets (1986)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Metallica — Master of Puppets (1986)</h3>
@@ -180,7 +174,6 @@
                     <img src="../../assets/img/albums/pappos-blues-volumen-1.jpg" alt="Tapa del disco Pappo’s Blues — Volumen 1 (1971)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Pappo’s Blues — Volumen 1 (1971)</h3>
@@ -190,7 +183,6 @@
                     <img src="../../assets/img/albums/acdc-stiff-upper-lip.jpg" alt="Tapa del disco AC/DC — Stiff Upper Lip (2000)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>AC/DC — Stiff Upper Lip (2000)</h3>
@@ -200,7 +192,6 @@
                     <img src="../../assets/img/albums/divididos-la-era-de-la-boludez.jpg" alt="Tapa del disco Divididos — La Era de la Boludez (1993)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Divididos — La Era de la Boludez (1993)</h3>
@@ -210,22 +201,29 @@
                     <img src="../../assets/img/albums/sumo-llegando-los-monos.jpg" alt="Tapa del disco Sumo — Llegando los monos (1986)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Sumo — Llegando los monos (1986)</h3>
                 </article>
               </div>
-            </div>
+            </section>
           </div>
-          <button id="challenge-button" class="button button-primary" type="button">Generar desafío</button>
-          <p id="challenge-result" class="challenge">Tu próximo desafío aparecerá acá.</p>
-        </section>
+          <div class="profile-challenge">
+            <button id="challenge-button" class="button button-primary" type="button">Generar desafío</button>
+            <p id="challenge-result" class="challenge">Tu próximo desafío aparecerá acá.</p>
+          </div>
+        </div>
       </div>
-      <div class="page-actions">
-        <a class="button button-secondary" href="glaucia-ferreira.html">← Perfil anterior</a>
-        <a class="button button-secondary" href="andrea-maslucan-moreno.html">Siguiente perfil →</a>
-      </div>
+      <nav class="page-actions profile-navigation" aria-label="Navegación entre perfiles">
+        <a class="button button-secondary profile-nav-previous" href="glaucia-ferreira.html">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 5-7 7 7 7M5 12h14"/></svg>
+          <span>Perfil anterior</span>
+        </a>
+        <a class="button button-secondary profile-nav-next" href="andrea-maslucan-moreno.html">
+          <span>Siguiente perfil</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 5 7 7-7 7M5 12h14"/></svg>
+        </a>
+      </nav>
     </main>
 
     <footer class="site-footer" data-site-footer></footer>

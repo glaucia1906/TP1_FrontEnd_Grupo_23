@@ -14,7 +14,7 @@
     >
     <link rel="stylesheet" href="../../assets/css/base.css?v=1">
     <link rel="stylesheet" href="../../components/member-photo/member-photo.css?v=1">
-    <link rel="stylesheet" href="../../assets/css/pages/perfiles.css?v=1">
+    <link rel="stylesheet" href="../../assets/css/pages/perfiles.css?v=16">
     <link rel="stylesheet" href="../../components/challenge/challenge.css?v=1">
     <link rel="stylesheet" href="../../components/header/header.css?v=12">
     <link rel="stylesheet" href="../../components/footer/footer.css?v=1">
@@ -28,7 +28,7 @@
 
     <main class="inner-main">
       <div class="profile-shell">
-        <section class="profile-card">
+        <section class="profile-card" aria-labelledby="profile-name">
           <button
             class="member-photo member-photo-transform profile-photo is-round"
             type="button"
@@ -50,7 +50,7 @@
             <span class="transform-hint" aria-hidden="true">Activar ki saiyajin</span>
           </button>
           <p class="eyebrow">PERFIL 01</p>
-          <h1>Sebastián Fernández</h1>
+          <h1 id="profile-name">Sebastián Fernández</h1>
           <p class="profile-meta profile-age">36 años</p>
           <p class="profile-meta profile-location">
             <img src="../../assets/img/iconos/ubicacion.webp" width="18" height="18" alt="" aria-hidden="true">
@@ -73,24 +73,25 @@
             <span>@Fernandez-Sebastian</span>
           </a>
         </section>
-        <section class="profile-details">
-          <h2>Habilidades</h2>
-          <ul class="chip-list">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>Trabajo en equipo</li>
-          </ul>
+        <div class="profile-details">
+          <section class="profile-skills" aria-labelledby="skills-title">
+            <h2 id="skills-title">Habilidades</h2>
+            <ul class="chip-list">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Trabajo en equipo</li>
+            </ul>
+          </section>
           <div class="favorites">
-            <div>
-              <h2>Películas favoritas</h2>
+            <section class="favorites-group" aria-labelledby="movies-title">
+              <h2 id="movies-title">Películas favoritas</h2>
               <div class="media-grid">
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=l91Km49W9qI" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler de Harry Potter y la piedra filosofal en YouTube (se abre en una pestaña nueva)" title="Ver tráiler de Harry Potter y la piedra filosofal en YouTube (se abre en una pestaña nueva)">
                     <img src="../../assets/img/peliculas/sebastian-harry-potter.jpg" alt="Portada de Harry Potter" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" fill="none" stroke-width="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4" stroke="currentColor" fill="none" stroke-width="2"/></svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Harry Potter</h3>
@@ -100,7 +101,6 @@
                     <img src="../../assets/img/peliculas/senor-de-los-anillos.jpg" alt="Portada de El señor de los anillos" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" fill="none" stroke-width="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4" stroke="currentColor" fill="none" stroke-width="2"/></svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>El señor de los anillos</h3>
@@ -110,7 +110,6 @@
                     <img src="../../assets/img/peliculas/dragon-ball-z.jpg" alt="Portada de Dragon Ball Z" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" fill="none" stroke-width="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4" stroke="currentColor" fill="none" stroke-width="2"/></svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Dragon Ball Z</h3>
@@ -120,7 +119,6 @@
                     <img src="../../assets/img/peliculas/fullmetal-alchemist.jpg" alt="Portada de Fullmetal Alchemist: Brotherhood" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" fill="none" stroke-width="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4" stroke="currentColor" fill="none" stroke-width="2"/></svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Fullmetal Alchemist: Brotherhood</h3>
@@ -130,7 +128,6 @@
                     <img src="../../assets/img/peliculas/jujutsu-kaisen.jpg" alt="Portada de Jujutsu Kaisen" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" fill="none" stroke-width="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4" stroke="currentColor" fill="none" stroke-width="2"/></svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Jujutsu Kaisen</h3>
@@ -140,7 +137,6 @@
                     <img src="../../assets/img/peliculas/demon-slayer.jpg" alt="Portada de Demon Slayer" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" fill="none" stroke-width="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4" stroke="currentColor" fill="none" stroke-width="2"/></svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Demon Slayer</h3>
@@ -150,22 +146,20 @@
                     <img src="../../assets/img/peliculas/shingeki-no-kyojin.jpg" alt="Portada de Shingeki no Kyojin" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" fill="none" stroke-width="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4" stroke="currentColor" fill="none" stroke-width="2"/></svg>
-                      <span>Tráiler</span>
                     </span>
                   </a>
                   <h3>Shingeki no Kyojin</h3>
                 </article>
               </div>
-            </div>
-            <div>
-              <h2>Discos favoritos</h2>
-              <div class="media-grid">
+            </section>
+            <section class="favorites-group" aria-labelledby="albums-title">
+              <h2 id="albums-title">Discos favoritos</h2>
+              <div class="media-grid media-grid-albums">
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=bPqCwhSIrLA" target="_blank" rel="noopener noreferrer" aria-label="Escuchar Callejeros — Presión (álbum completo) en YouTube (se abre en una pestaña nueva)" title="Escuchar Callejeros — Presión (álbum completo) en YouTube (se abre en una pestaña nueva)">
                     <img src="../../assets/img/albums/callejeros-presion.jpg" alt="Tapa del disco Callejeros — Presión (2003)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Callejeros — Presión (2003)</h3>
@@ -175,7 +169,6 @@
                     <img src="../../assets/img/albums/redondos-gulp.jpg" alt="Tapa del disco Los Redondos — Gulp (1985)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Los Redondos — Gulp (1985)</h3>
@@ -185,7 +178,6 @@
                     <img src="../../assets/img/albums/redondos-oktubre.jpg" alt="Tapa del disco Los Redondos — Oktubre (1986)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Los Redondos — Oktubre (1986)</h3>
@@ -195,7 +187,6 @@
                     <img src="../../assets/img/albums/callejeros-rocanroles.jpg" alt="Tapa del disco Callejeros — Rocanroles sin destino (2004)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Callejeros — Rocanroles sin destino (2004)</h3>
@@ -205,22 +196,29 @@
                     <img src="../../assets/img/albums/rhcp-californication.jpg" alt="Tapa del disco Red Hot Chili Peppers — Californication (1999)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
-                      <span>Escuchar</span>
                     </span>
                   </a>
                   <h3>Red Hot Chili Peppers — Californication (1999)</h3>
                 </article>
               </div>
-            </div>
+            </section>
           </div>
-          <button id="challenge-button" class="button button-primary" type="button">Generar desafío</button>
-          <p id="challenge-result" class="challenge">Tu próximo desafío aparecerá acá.</p>
-        </section>
+          <div class="profile-challenge">
+            <button id="challenge-button" class="button button-primary" type="button">Generar desafío</button>
+            <p id="challenge-result" class="challenge">Tu próximo desafío aparecerá acá.</p>
+          </div>
+        </div>
       </div>
-      <div class="page-actions">
-        <a class="button button-secondary" href="../../index.html#equipo">← Volver al equipo</a>
-        <a class="button button-secondary" href="glaucia-ferreira.html">Siguiente perfil →</a>
-      </div>
+      <nav class="page-actions profile-navigation" aria-label="Navegación entre perfiles">
+        <a class="button button-secondary profile-nav-previous" href="../../index.html#equipo">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 5-7 7 7 7M5 12h14"/></svg>
+          <span>Volver al equipo</span>
+        </a>
+        <a class="button button-secondary profile-nav-next" href="glaucia-ferreira.html">
+          <span>Siguiente perfil</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 5 7 7-7 7M5 12h14"/></svg>
+        </a>
+      </nav>
     </main>
 
     <footer class="site-footer" data-site-footer></footer>
