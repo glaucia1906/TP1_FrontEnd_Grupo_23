@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <title>DragonByte</title>
+  <defs>
+    <radialGradient id="sphere" cx="38%" cy="32%" r="92%">
+      <stop stop-color="#ffd84d"/>
+      <stop offset=".52" stop-color="#ff8a18"/>
+      <stop offset=".82" stop-color="#b83e04"/>
+      <stop offset="1" stop-color="#702000"/>
+    </radialGradient>
+    <radialGradient id="shine">
+      <stop stop-color="#ffffe1" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#ffffe1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow">
+      <stop offset=".8" stop-color="#ff8a18" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#ff8a18" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M16 0H0V16" fill="none" stroke="#581e00" stroke-opacity=".07"/>
+    </pattern>
+    <path id="star" d="M0-5 1.1-1.5 4.8-1.5 1.8.7 2.9 4.4 0 2.2-2.9 4.4-1.8.7-4.8-1.5-1.1-1.5Z"/>
+  </defs>
+  <circle cx="96" cy="96" r="96" fill="url(#glow)"/>
+  <circle cx="96" cy="96" r="87" fill="url(#sphere)" stroke="#ffd246" stroke-opacity=".5" stroke-width="2"/>
+  <circle cx="96" cy="96" r="73" fill="url(#grid)"/>
+  <circle cx="65" cy="53" r="15" fill="url(#shine)"/>
+  <g fill="#ffe15b">
+    <use href="#star" x="100" y="52"/>
+    <use href="#star" x="55" y="80"/>
+    <use href="#star" x="143" y="80"/>
+    <use href="#star" x="69" y="143"/>
+    <use href="#star" x="128" y="146"/>
+  </g>
+  <!-- Letras trazadas para mantener la marca sin depender de fuentes externas. -->
+  <g fill="#361204" fill-rule="evenodd">
+    <path d="M50 78H82Q91 78 91 87V111Q91 120 82 120H50ZM59 87V111H80Q82 111 82 109V89Q82 87 80 87Z"/>
+    <path d="M99 78H132Q141 78 141 87V93Q141 97 137 99Q141 101 141 105V111Q141 120 132 120H99ZM108 87V95H130Q132 95 132 93V89Q132 87 130 87ZM108 103V111H130Q132 111 132 109V105Q132 103 130 103Z"/>
+  </g>
+</svg>
