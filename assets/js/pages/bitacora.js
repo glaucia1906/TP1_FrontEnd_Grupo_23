@@ -125,12 +125,17 @@
     try {
       const stored = JSON.parse(localStorage.getItem(storageKey) || '[]');
       if (Array.isArray(stored)) {
-        const numbers = new Set(originalNumbers);
+        const numbers = new Set();
+        let lastNumber = Math.max(0, ...originalNumbers);
         savedEntries = stored.filter((entry) => {
           if (!isValidEntry(entry) || numbers.has(entry.number)) return false;
           numbers.add(entry.number);
           return true;
-        }).sort((a, b) => a.number - b.number);
+        }).sort((a, b) => a.number - b.number).map((entry) => {
+          // Conserva las entradas locales cuando se agregan nuevos eventos fijos.
+          lastNumber = Math.max(lastNumber + 1, entry.number);
+          return { ...entry, number: lastNumber };
+        });
         savedEntries.forEach(addEntryCard);
       }
     } catch {
