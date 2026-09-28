@@ -2,6 +2,8 @@
 
 Sitio web grupal realizado para Desarrollo de Sistemas Web(Frontend).
 
+Sitio en línea: [DragonByte en Vercel](https://tp-1-front-end-grupo-23.vercel.app/).
+
 ## Integrantes
 
 - Sebastián Fernández — [GitHub](https://github.com/Fernandez-Sebastian)
@@ -19,7 +21,7 @@ Sitio web grupal realizado para Desarrollo de Sistemas Web(Frontend).
 ## Estructura
 
 ```text
-dragonbyte/
+TP1_FrontEnd_Grupo_23/
 ├── .editorconfig
 ├── .gitignore
 ├── index.html
@@ -38,6 +40,7 @@ dragonbyte/
 │   └── img/
 │       ├── albums/
 │       ├── iconos/
+│       │   ├── dragonbyte.svg
 │       │   ├── github.webp
 │       │   └── ubicacion.webp
 │       ├── peliculas/
@@ -60,6 +63,17 @@ dragonbyte/
 │   └── member-photo/
 │       ├── member-photo.css
 │       └── member-photo.js
+├── docs/
+│   ├── page-1-inicio.png
+│   ├── page-1-perfiles-modo-s.png
+│   ├── page-1-game.png
+│   ├── page-2-sebastian.png
+│   ├── page-3-glaucia.png
+│   ├── page-4-ignacio.png
+│   ├── page-5-andrea.png
+│   ├── page-6-bitacora-modo-lista.png
+│   ├── page-6-bitacora-modo-compacto.png
+│   └── page-6-forms.png
 ├── pages/
 │   ├── bitacora.html
 │   └── equipo/
@@ -70,7 +84,7 @@ dragonbyte/
 └── README.md
 ```
 
-La portada permanece en `index.html`. La bitácora está en `pages/bitacora.html` y los perfiles en `pages/equipo/`. Las imágenes se organizan por uso dentro de `assets/img/`: `perfiles/` contiene las fotos, avatares y `avatar-placeholder.svg` (9 archivos); `iconos/` contiene los iconos de GitHub y ubicación. Las carpetas `albums/` y `peliculas/` conservan sus portadas y pósters, y los registros `sources-*.json` permanecen en `assets/img/`.
+La portada está en `index.html`, la bitácora en `pages/bitacora.html` y los perfiles en `pages/equipo/`. Los estilos y scripts se organizan en `assets/css/` y `assets/js/`, y los componentes reutilizables en `components/`. Dentro de `assets/img/`, `perfiles/` guarda fotos y avatares; `iconos/`, el logo de DragonByte y los iconos de GitHub y ubicación; `albums/` y `peliculas/`, portadas y pósters. Los registros de fuentes son `sources-*.json`. Las diez capturas del sitio están en `docs/`.
 
 ## Organización del código
 
@@ -138,7 +152,24 @@ Luego accedé a `http://localhost:8000/`. La bitácora estará en `http://localh
 - Perfiles: el botón **Generar desafío** propone un reto aleatorio de desarrollo.
 - Bitácora: permite agregar entradas, filtrar por fecha y cambiar el orden. Las entradas nuevas se guardan en `localStorage` del navegador; no se sincronizan entre integrantes. La clave del formulario es una validación local de demostración.
 
-## Verificación antes de entregar
+## Capturas de pantalla
+
+Capturas guardadas en `docs/`. Hacé clic en cada miniatura para verla en tamaño completo.
+
+| Captura | Descripción |
+| --- | --- |
+| [<img src="docs/page-1-inicio.png" alt="Página de inicio de DragonByte" width="180">](docs/page-1-inicio.png) | **Inicio:** presentación de DragonByte, tarjetas del equipo, acceso al juego y misión del proyecto. |
+| [<img src="docs/page-1-perfiles-modo-s.png" alt="Tarjetas del equipo con retratos transformados" width="180">](docs/page-1-perfiles-modo-s.png) | **Equipo transformado:** los cuatro integrantes con sus avatares en modo Saiyajin. |
+| [<img src="docs/page-1-game.png" alt="Pista y controles de Dragon Bowling" width="180">](docs/page-1-game.png) | **Dragon Bowling:** pista de esferas con controles de puntería, potencia y contador de intentos. |
+| [<img src="docs/page-2-sebastian.png" alt="Perfil de Sebastián Fernández" width="180">](docs/page-2-sebastian.png) | **Sebastián Fernández:** presentación, habilidades, películas y discos favoritos, y generador de desafíos. |
+| [<img src="docs/page-3-glaucia.png" alt="Perfil de Glaucia Ferreira" width="180">](docs/page-3-glaucia.png) | **Glaucia Ferreira:** experiencia en backend, habilidades, preferencias de cine y música, y generador de desafíos. |
+| [<img src="docs/page-4-ignacio.png" alt="Perfil de Ignacio Grosman" width="180">](docs/page-4-ignacio.png) | **Ignacio Grosman:** experiencia Full Stack, habilidades, películas y discos favoritos, y generador de desafíos. |
+| [<img src="docs/page-5-andrea.png" alt="Perfil de Andrea Maslucan Moreno" width="180">](docs/page-5-andrea.png) | **Andrea Maslucan Moreno:** presentación, habilidades, selección de películas y discos, y generador de desafíos. |
+| [<img src="docs/page-6-bitacora-modo-lista.png" alt="Bitácora en modo lista" width="180">](docs/page-6-bitacora-modo-lista.png) | **Bitácora en lista:** línea de tiempo, filtros y entradas del proyecto con decisiones y próximos pasos. |
+| [<img src="docs/page-6-bitacora-modo-compacto.png" alt="Bitácora en modo compacto" width="180">](docs/page-6-bitacora-modo-compacto.png) | **Bitácora compacta:** las mismas entradas organizadas en una cuadrícula de tarjetas. |
+| [<img src="docs/page-6-forms.png" alt="Formulario de nueva entrada de la bitácora" width="180">](docs/page-6-forms.png) | **Nueva entrada:** formulario para registrar eventos, decisiones y próximos pasos mediante la clave del equipo. |
+
+## Verificación hechas antes de entregar
 
 - Abrir portada, bitácora y los cuatro perfiles; comprobar enlaces, imágenes y consola del navegador.
 - Revisar el menú y la distribución en pantallas pequeñas y grandes.
@@ -151,14 +182,6 @@ Luego accedé a `http://localhost:8000/`. La bitácora estará en `http://localh
 
 En el perfil Andrea se usó [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/index.html) para obtener las portadas de discos y la [API PageImages de Wikipedia](https://www.mediawiki.org/wiki/Extension:PageImages) para los posters de películas. Las consultas son gratuitas y no requieren clave API. Las URLs obtenidas se incorporaron al HTML; la página carga las imágenes externas sin consultar las APIs en cada visita.
 
-## Pendientes
-
-- Agregar capturas de pantalla.
-- Completar la documentación del uso de IA.
-- Publicar en Vercel y agregar aquí la URL.
-
 ## Uso de IA
 
-Se utilizó Codex de OpenAI para crear la estructura base, proponer la identidad visual y generar una
-primera versión de HTML, CSS y JavaScript. El equipo debe revisar, comprender, probar y adaptar todo
-el material antes de la entrega, e indicar aquí el plan utilizado y su experiencia previa.
+Se utilizó Codex de OpenAI para crear la estructura base, proponer la identidad visual y generar una primera versión de HTML, CSS y JavaScript. Esto nos permitió también organizar el proyecto de una manera más estructurada y descentralizar el codigo de los archivos principales. El equipo revisó, completo, adaptó y realizó las pruebas necesarias sobre todo el material antes del deploy oficial.
