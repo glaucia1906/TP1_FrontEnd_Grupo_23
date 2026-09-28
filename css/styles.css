@@ -1378,14 +1378,27 @@ body.log-dialog-open {
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--surface-2);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.media-card:focus-within {
+  border-color: var(--orange);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .3), 0 0 18px rgba(255, 138, 24, .2);
+  transform: translateY(-5px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .media-card:hover {
+    border-color: var(--orange);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .3), 0 0 18px rgba(255, 138, 24, .2);
+    transform: translateY(-5px);
+  }
 }
 
 .media-artwork {
   position: relative;
-}
-
-.media-artwork > a:not(.media-action) {
   display: block;
+  text-decoration: none;
 }
 
 .media-action {
@@ -1422,19 +1435,19 @@ body.log-dialog-open {
   color: #b6efff;
 }
 
-.media-action:hover,
-.media-action:focus-visible {
+.media-artwork:hover .media-action,
+.media-artwork:focus-visible .media-action {
   background: rgba(31, 45, 68, .98);
   box-shadow: 0 7px 20px rgba(0, 0, 0, .4);
   transform: translateY(-2px);
 }
 
-.media-action:focus-visible {
+.media-artwork:focus-visible {
   outline: 2px solid var(--cyan);
-  outline-offset: 3px;
+  outline-offset: -3px;
 }
 
-.media-action:active {
+.media-artwork:active .media-action {
   transform: translateY(0);
   box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
 }
@@ -1664,7 +1677,9 @@ body.log-dialog-open {
   html {
     scroll-behavior: auto;
   }
-  .chip-list li:hover {
+  .chip-list li:hover,
+  .media-card:hover,
+  .media-card:focus-within {
     transform: none;
   }
   .chip-list li::before {
