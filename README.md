@@ -150,7 +150,7 @@ Luego accedé a `http://localhost:8000/`. La bitácora estará en `http://localh
 - Navegación: el menú se abre y cierra en pantallas pequeñas.
 - Retratos: las fotos alternan entre su estado base y su transformación.
 - Perfiles: el botón **Generar desafío** propone un reto aleatorio de desarrollo.
-- Bitácora: permite agregar entradas, filtrar por fecha y cambiar el orden. Las entradas nuevas se guardan en `localStorage` del navegador; no se sincronizan entre integrantes. La clave del formulario es una validación local de demostración.
+- Bitácora: permite agregar entradas, filtrar por fecha y cambiar el orden. Al agregar una entrada, primero se pega y verifica el código de acceso; luego se habilita el formulario. Cada nueva entrada requiere verificar el código otra vez. Las entradas nuevas se guardan en `localStorage` del navegador; no se sincronizan entre integrantes. La verificación de la clave es local y de demostración.
 
 ## Capturas de pantalla
 

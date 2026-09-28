@@ -278,6 +278,10 @@ body.log-dialog-open {
   backdrop-filter: blur(5px);
 }
 
+.log-dialog[data-step="verify"] {
+  width: min(520px, calc(100% - 32px));
+}
+
 .log-dialog-header {
   display: flex;
   align-items: flex-start;
@@ -319,6 +323,20 @@ body.log-dialog-open {
 .log-form {
   display: grid;
   gap: 18px;
+}
+
+.log-form[hidden] {
+  display: none;
+}
+
+.log-form-error {
+  margin: 0;
+  color: var(--yellow);
+  font-size: .84rem;
+}
+
+.log-field input[aria-invalid="true"] {
+  border-color: var(--yellow);
 }
 
 .log-form-row {
