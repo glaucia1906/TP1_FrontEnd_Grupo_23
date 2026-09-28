@@ -12,7 +12,7 @@
       rel="stylesheet"
     >
     <link rel="stylesheet" href="css/styles.css?v=23">
-    <script src="js/main.js?v=11" defer></script>
+    <script src="js/main.js?v=12" defer></script>
   </head>
   <body>
     <header id="inicio-bitacora" class="site-header" tabindex="-1">
@@ -257,6 +257,10 @@
           <div class="log-field">
             <label for="log-next-step">Próximo paso</label>
             <textarea id="log-next-step" name="nextStep" rows="2" maxlength="2000" placeholder="¿Cómo van a continuar?" required></textarea>
+          </div>
+          <div class="log-field">
+            <label for="log-auth-key">Clave de autenticación</label>
+            <input id="log-auth-key" name="authKey" type="password" autocomplete="off" placeholder="Ingresá la clave del equipo" required>
           </div>
           <p id="log-form-note" class="log-form-note">Las nuevas entradas se guardan en este navegador.</p>
           <div class="log-form-actions">

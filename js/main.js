@@ -130,6 +130,9 @@ function initializeLogbook() {
   const sortOrder = document.querySelector('#log-sort-order');
   const filterSummary = document.querySelector('#log-filter-summary');
   const storageKey = 'dragonbyte-logbook-v1';
+  // Validación local del formulario; no reemplaza la autenticación en un servidor.
+  const publicationKey = 'equipo-23-IFTS-29';
+  const authKeyField = form.elements.namedItem('authKey');
   const eventTypes = ['Inicio', 'Revisión', 'Diseño', 'Integración', 'Desarrollo'];
   const textLimits = { title: 120, description: 3000, decisions: 2000, nextStep: 2000 };
   const formatNumber = (number) => String(number).padStart(2, '0');
@@ -264,6 +267,7 @@ function initializeLogbook() {
 
   function openLogDialog() {
     form.reset();
+    authKeyField.setCustomValidity('');
     Object.keys(textLimits).forEach((name) => form.elements.namedItem(name).setCustomValidity(''));
     form.elements.namedItem('number').value = formatNumber(nextNumber());
     const today = new Date();
@@ -279,7 +283,11 @@ function initializeLogbook() {
   document.querySelector('#log-cancel').addEventListener('click', () => dialog.close());
   dialog.addEventListener('close', () => {
     document.body.classList.remove('log-dialog-open');
+    authKeyField.value = '';
+    authKeyField.setCustomValidity('');
   });
+
+  authKeyField.addEventListener('input', () => authKeyField.setCustomValidity(''));
 
   Object.keys(textLimits).forEach((name) => {
     const field = form.elements.namedItem(name);
@@ -290,6 +298,9 @@ function initializeLogbook() {
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
+    authKeyField.setCustomValidity(
+      authKeyField.value === publicationKey ? '' : 'La clave de autenticación es incorrecta.'
+    );
     Object.keys(textLimits).forEach((name) => {
       const field = form.elements.namedItem(name);
       field.setCustomValidity(field.value.trim() ? '' : 'Completá este campo con texto.');
