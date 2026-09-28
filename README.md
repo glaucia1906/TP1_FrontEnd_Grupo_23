@@ -31,6 +31,7 @@ dragonbyte/
 │   │       ├── bitacora.css
 │   │       └── perfiles.css
 │   ├── js/
+│   │   ├── bitacora-access.js
 │   │   └── pages/
 │   │       ├── inicio.js
 │   │       └── bitacora.js
@@ -44,6 +45,9 @@ dragonbyte/
 │       ├── sources-ignacio.json
 │       └── sources-sebastian.json
 ├── components/
+│   ├── bowling/
+│   │   ├── bowling.css
+│   │   └── bowling.js
 │   ├── challenge/
 │   │   ├── challenge.css
 │   │   └── challenge.js
@@ -77,7 +81,9 @@ Cada archivo tiene una responsabilidad y cada página carga los recursos que uti
 | `assets/css/base.css` | Variables de diseño, estilos base, tipografía, controles, layout común y marca compartida. |
 | `assets/css/pages/` | Estilos específicos de portada, bitácora y perfiles, con sus ajustes responsive. |
 | `assets/js/pages/inicio.js` | Botón de poder y animación del núcleo de la portada. |
+| `assets/js/bitacora-access.js` | Clave de demostración compartida entre el juego de esferas y el formulario de bitácora. |
 | `assets/js/pages/bitacora.js` | Entradas, formulario, filtros, orden y almacenamiento local de la bitácora. |
+| `components/bowling/` | Pista de esferas, puntería, potencia, lanzamientos, derribo de palos y revelación de la clave al ganar. |
 | `components/header/` | Encabezado, enlaces, estado de navegación y menú adaptable. |
 | `components/footer/` | Pie de página y enlaces de navegación. |
 | `components/member-photo/` | Retratos y transformación de fotos en portada y perfiles. |
@@ -89,7 +95,7 @@ Cada archivo tiene una responsabilidad y cada página carga los recursos que uti
 
 El encabezado y el pie se mantienen en un único lugar. Para cambiar su contenido, editá la plantilla HTML dentro de su JavaScript. Cada página incluye los contenedores `data-site-header` y `data-site-footer`; los componentes resuelven sus enlaces desde la ubicación de sus scripts para funcionar también en páginas internas y despliegues bajo un subdirectorio.
 
-Los scripts son clásicos, se cargan con `defer` y encapsulan su estado para evitar variables globales. Se conserva la apertura directa de los HTML, sin dependencias ni compilación. La navegación compartida requiere JavaScript habilitado.
+Los scripts son clásicos, se cargan con `defer` y encapsulan su estado. La configuración de acceso se comparte mediante el objeto congelado `window.DragonByteAccess`; `bitacora-access.js` debe cargarse antes del juego y del formulario. Se conserva la apertura directa de los HTML, sin dependencias ni compilación. La navegación compartida requiere JavaScript habilitado.
 
 ## Convenciones de mantenimiento
 
@@ -126,6 +132,7 @@ Luego accedé a `http://localhost:8000/`. La bitácora estará en `http://localh
 ## Funciones JavaScript
 
 - Portada: el botón **Activar poder** cambia el estado visual y el mensaje del núcleo de energía.
+- Esferas: el bowling de la portada comienza con **Empezar partida** y desafía a derribar diez palos en un máximo de tres lanzamientos. La pista ocupa todo el ancho y muestra la potencia en una barra vertical. Las cuatro flechas del teclado mueven la mira; mantené presionado el botón de lanzamiento con el mouse para cargar potencia y soltalo para lanzar. También se puede mantener y soltar Espacio con el botón enfocado, y usar los controles de dirección en pantallas táctiles. Las instrucciones están en **Ayuda**. Al finalizar aparece un cartel de victoria con la clave compartida de la bitácora o de **Game over**, con la opción **Volver a jugar**. **Reiniciar partida** vuelve al cartel inicial. La victoria no se guarda ni completa el formulario automáticamente.
 - Navegación: el menú se abre y cierra en pantallas pequeñas.
 - Retratos: las fotos alternan entre su estado base y su transformación.
 - Perfiles: el botón **Generar desafío** propone un reto aleatorio de desarrollo.
@@ -136,6 +143,7 @@ Luego accedé a `http://localhost:8000/`. La bitácora estará en `http://localh
 - Abrir portada, bitácora y los cuatro perfiles; comprobar enlaces, imágenes y consola del navegador.
 - Revisar el menú y la distribución en pantallas pequeñas y grandes.
 - Probar el poder de la portada, los retratos y la apertura, regeneración y cierre de desafíos.
+- Probar el bowling con mouse, teclado y controles táctiles; comprobar los tres intentos, el reinicio y que la clave solo se revele al derribar los diez palos.
 - Probar filtros y formulario de bitácora en un navegador de prueba, y recargar para comprobar el almacenamiento local.
 - Comprobar navegación con teclado, cierre de diálogos con Escape y preferencia de movimiento reducido.
 
@@ -145,7 +153,6 @@ En el perfil Andrea se usó [iTunes Search API](https://developer.apple.com/libr
 
 ## Pendientes
 
-- Revisar los datos personales y textos que todavía sean provisorios.
 - Agregar capturas de pantalla.
 - Completar la documentación del uso de IA.
 - Publicar en Vercel y agregar aquí la URL.

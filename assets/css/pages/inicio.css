@@ -4,7 +4,7 @@
   position: relative;
   isolation: isolate;
   width: min(1180px, calc(100% - 32px));
-  min-height: 650px;
+  min-height: 560px;
   margin: auto;
   display: grid;
   grid-template-columns: 1.15fr .85fr;
@@ -295,19 +295,16 @@ body.powered {
 .section {
   width: min(1180px, calc(100% - 32px));
   margin: auto;
-}
-
-.section {
-  padding: 100px 0;
+  padding: 48px 0;
 }
 
 .section-heading {
   max-width: 720px;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
 }
 
 .section-heading h2,
-.mission h2 {
+.mission h3 {
   margin: 0 0 14px;
   font-size: clamp(2rem, 5vw, 3.5rem);
 }
@@ -399,7 +396,6 @@ body.powered {
 }
 
 .mission {
-  margin-bottom: 100px;
   padding: 54px;
   border-left: 4px solid var(--orange);
   background: var(--surface);
@@ -480,7 +476,8 @@ body.powered {
   .hero {
     min-height: auto;
     grid-template-columns: 1fr;
-    padding: 80px 0;
+    gap: 28px;
+    padding: 48px 0;
   }
 
   .energy-core {
@@ -490,6 +487,14 @@ body.powered {
 }
 
 @media (max-width: 600px) {
+  .section {
+    padding: 32px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 24px;
+  }
+
   .team-grid {
     grid-template-columns: 1fr;
   }
@@ -506,11 +511,7 @@ body.powered {
   }
 
   .hero {
-    padding: 55px 0;
-  }
-
-  .section {
-    padding: 70px 0;
+    padding: 32px 0;
   }
 
   .hero-actions .button {

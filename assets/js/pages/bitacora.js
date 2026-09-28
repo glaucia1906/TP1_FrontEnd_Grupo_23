@@ -16,7 +16,7 @@
     const filterSummary = document.querySelector('#log-filter-summary');
     const storageKey = 'dragonbyte-logbook-v1';
     // Validación local del formulario; no reemplaza la autenticación en un servidor.
-    const publicationKey = 'equipo-23-IFTS-29';
+    const publicationKey = window.DragonByteAccess?.publicationKey;
     const authKeyField = form.elements.namedItem('authKey');
     const eventTypes = ['Inicio', 'Revisión', 'Diseño', 'Integración', 'Desarrollo'];
     const textLimits = { title: 120, description: 3000, decisions: 2000, nextStep: 2000 };

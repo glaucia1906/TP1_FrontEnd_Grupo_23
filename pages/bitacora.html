@@ -15,9 +15,10 @@
     <link rel="stylesheet" href="../assets/css/pages/bitacora.css?v=1">
     <link rel="stylesheet" href="../components/header/header.css?v=2">
     <link rel="stylesheet" href="../components/footer/footer.css?v=1">
-    <script src="../components/header/header.js?v=1" defer></script>
-    <script src="../components/footer/footer.js?v=1" defer></script>
-    <script src="../assets/js/pages/bitacora.js?v=1" defer></script>
+    <script src="../components/header/header.js?v=2" defer></script>
+    <script src="../components/footer/footer.js?v=2" defer></script>
+    <script src="../assets/js/bitacora-access.js?v=1" defer></script>
+    <script src="../assets/js/pages/bitacora.js?v=2" defer></script>
   </head>
   <body>
     <header id="inicio-bitacora" class="site-header" tabindex="-1" data-site-header></header>
@@ -238,7 +239,8 @@
           </div>
           <div class="log-field">
             <label for="log-auth-key">Clave de autenticación</label>
-            <input id="log-auth-key" name="authKey" type="password" autocomplete="off" placeholder="Ingresá la clave del equipo" required>
+            <input id="log-auth-key" name="authKey" type="password" autocomplete="off" placeholder="Ingresá la clave del equipo" aria-describedby="log-auth-help" required>
+            <p id="log-auth-help" class="log-form-note"><a href="../index.html#esferas">Descubrí la clave jugando al bowling de esferas.</a></p>
           </div>
           <p id="log-form-note" class="log-form-note">Las nuevas entradas se guardan en este navegador.</p>
           <div class="log-form-actions">
