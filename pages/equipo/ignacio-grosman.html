@@ -11,32 +11,19 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="css/styles.css?v=28">
-    <script src="js/main.js?v=7" defer></script>
-    <script src="js/perfiles.js?v=4" defer></script>
+    <link rel="stylesheet" href="../../assets/css/base.css?v=1">
+    <link rel="stylesheet" href="../../components/member-photo/member-photo.css?v=1">
+    <link rel="stylesheet" href="../../assets/css/pages/perfiles.css?v=1">
+    <link rel="stylesheet" href="../../components/challenge/challenge.css?v=1">
+    <link rel="stylesheet" href="../../components/header/header.css?v=2">
+    <link rel="stylesheet" href="../../components/footer/footer.css?v=1">
+    <script src="../../components/header/header.js?v=1" defer></script>
+    <script src="../../components/footer/footer.js?v=1" defer></script>
+    <script src="../../components/member-photo/member-photo.js?v=1" defer></script>
+    <script src="../../components/challenge/challenge.js?v=1" defer></script>
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="index.html">
-        <span class="brand-mark">DB</span>
-        <span>DRAGONBYTE</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu">Menú</button>
-      <nav id="main-menu" class="main-nav">
-        <a href="index.html">Inicio</a>
-        <details class="nav-dropdown">
-          <summary class="nav-dropdown-toggle is-active">Equipo</summary>
-          <ul class="nav-submenu">
-            <li><a href="index.html#equipo">Ver equipo</a></li>
-            <li><a href="sebastian-fernandez.html">Sebastián Fernández</a></li>
-            <li><a href="glaucia-ferreira.html">Glaucia Ferreira</a></li>
-            <li><a class="is-active" aria-current="page" href="ignacio-grosman.html">Ignacio Grosman</a></li>
-            <li><a href="andrea-maslucan-moreno.html">Andrea Maslucan Moreno</a></li>
-          </ul>
-        </details>
-        <a href="bitacora.html">Bitácora</a>
-      </nav>
-    </header>
+    <header class="site-header" data-site-header></header>
 
     <main class="inner-main">
       <div class="profile-shell">
@@ -50,12 +37,12 @@
           >
             <img
               class="portrait-base"
-              src="img/Nacho-tranqui.jpg"
+              src="../../assets/img/perfiles/Nacho-tranqui.jpg"
               alt="Ignacio Grosman en estado base"
             >
             <img
               class="portrait-transformed"
-              src="img/Nacho-super.jpg"
+              src="../../assets/img/perfiles/Nacho-super.jpg"
               alt=""
               aria-hidden="true"
             >
@@ -65,7 +52,7 @@
           <h1>Ignacio Grosman</h1>
           <p class="profile-meta profile-age">37 años</p>
           <p class="profile-meta profile-location">
-            <img src="img/ubicacion.webp" width="18" height="18" alt="" aria-hidden="true">
+            <img src="../../assets/img/iconos/ubicacion.webp" width="18" height="18" alt="" aria-hidden="true">
             Buenos Aires
           </p>
           <p>
@@ -81,7 +68,7 @@
             al final. Fuera de la pantalla, juego y miro fútbol.
           </p>
           <a class="text-link profile-github" href="https://github.com/IgnacioGrosman735" target="_blank" rel="noopener noreferrer">
-            <img src="img/github.webp" width="22" height="22" alt="GitHub">
+            <img src="../../assets/img/iconos/github.webp" width="22" height="22" alt="GitHub">
             <span>@IgnacioGrosman735</span>
           </a>
         </section>
@@ -104,7 +91,7 @@
               <div class="media-grid media-grid-fit">
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=vN-1Mup0UI0" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler de La naranja mecánica en YouTube (se abre en una pestaña nueva)" title="Ver tráiler de La naranja mecánica en YouTube">
-                    <img src="img/peliculas/la-naraja-mecanica.jpg" alt="Portada provisoria de la película 01 de Ignacio" loading="lazy">
+                    <img src="../../assets/img/peliculas/la-naraja-mecanica.jpg" alt="Portada provisoria de la película 01 de Ignacio" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4"/></svg>
                       <span>Tráiler</span>
@@ -114,7 +101,7 @@
                 </article>
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=shsx2FdqLHM" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler de Nueve Reinas en YouTube (se abre en una pestaña nueva)" title="Ver tráiler de Nueve Reinas en YouTube">
-                    <img src="img/peliculas/nueve_reinas.jpg" alt="Portada provisoria de la película 02 de Ignacio" loading="lazy">
+                    <img src="../../assets/img/peliculas/nueve_reinas.jpg" alt="Portada provisoria de la película 02 de Ignacio" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4"/></svg>
                       <span>Tráiler</span>
@@ -124,7 +111,7 @@
                 </article>
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=PdW0pGcWjwE" target="_blank" rel="noopener noreferrer" aria-label="Ver video de Intrusos en el espectáculo en YouTube (se abre en una pestaña nueva)" title="Ver especial de Intrusos en el espectáculo en YouTube">
-                    <img src="img/peliculas/intrusos.jpg" alt="Portada provisoria de la película 03 de Ignacio" loading="lazy">
+                    <img src="../../assets/img/peliculas/intrusos.jpg" alt="Portada provisoria de la película 03 de Ignacio" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4"/></svg>
                       <span>Ver video</span>
@@ -134,7 +121,7 @@
                 </article>
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=_YblGO0FUpE" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler promocional de Muñeca Brava en YouTube (se abre en una pestaña nueva)" title="Ver tráiler promocional de Muñeca Brava en YouTube">
-                    <img src="img/peliculas/muñeca-brava.jpg" alt="Portada provisoria de la película 04 de Ignacio" loading="lazy">
+                    <img src="../../assets/img/peliculas/muñeca-brava.jpg" alt="Portada provisoria de la película 04 de Ignacio" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4"/></svg>
                       <span>Tráiler</span>
@@ -144,7 +131,7 @@
                 </article>
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=UpPNDoKP6d4" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler de Primal en YouTube (se abre en una pestaña nueva)" title="Ver tráiler de Primal, temporada 2, en YouTube">
-                    <img src="img/peliculas/primal.jpg" alt="Portada provisoria de la película 05 de Ignacio" loading="lazy">
+                    <img src="../../assets/img/peliculas/primal.jpg" alt="Portada provisoria de la película 05 de Ignacio" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4"/></svg>
                       <span>Tráiler</span>
@@ -154,7 +141,7 @@
                 </article>
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=ySYnTO7leqI" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler de Rick and Morty en YouTube (se abre en una pestaña nueva)" title="Ver tráiler de Rick and Morty, temporada 8, en YouTube">
-                    <img src="img/peliculas/Rick-y-Morty.jpg" alt="Portada provisoria de la película 06 de Ignacio" loading="lazy">
+                    <img src="../../assets/img/peliculas/Rick-y-Morty.jpg" alt="Portada provisoria de la película 06 de Ignacio" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4"/></svg>
                       <span>Tráiler</span>
@@ -169,7 +156,7 @@
               <div class="media-grid media-grid-fit">
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=0hLESLXqBLI" target="_blank" rel="noopener noreferrer" aria-label="Escuchar Led Zeppelin IV de Led Zeppelin en YouTube (se abre en una pestaña nueva)" title="Escuchar Led Zeppelin IV completo en YouTube">
-                    <img src="img/albums/led-zeppelin-iv.jpg" alt="Tapa del disco Led Zeppelin — Led Zeppelin IV (1971)" loading="lazy">
+                    <img src="../../assets/img/albums/led-zeppelin-iv.jpg" alt="Tapa del disco Led Zeppelin — Led Zeppelin IV (1971)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
                       <span>Escuchar</span>
@@ -179,7 +166,7 @@
                 </article>
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=6xjJ2XIbGRk" target="_blank" rel="noopener noreferrer" aria-label="Escuchar la canción Master of Puppets del álbum Master of Puppets de Metallica en YouTube (se abre en una pestaña nueva)" title="Escuchar Master of Puppets de Metallica en YouTube (canción)">
-                    <img src="img/albums/metallica-master-of-puppets.jpg" alt="Tapa del disco Metallica — Master of Puppets (1986)" loading="lazy">
+                    <img src="../../assets/img/albums/metallica-master-of-puppets.jpg" alt="Tapa del disco Metallica — Master of Puppets (1986)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
                       <span>Escuchar</span>
@@ -189,7 +176,7 @@
                 </article>
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=jMWQCDPs8Vo" target="_blank" rel="noopener noreferrer" aria-label="Escuchar Volumen 1 de Pappo’s Blues en YouTube (se abre en una pestaña nueva)" title="Escuchar Volumen 1 de Pappo’s Blues completo en YouTube">
-                    <img src="img/albums/pappos-blues-volumen-1.jpg" alt="Tapa del disco Pappo’s Blues — Volumen 1 (1971)" loading="lazy">
+                    <img src="../../assets/img/albums/pappos-blues-volumen-1.jpg" alt="Tapa del disco Pappo’s Blues — Volumen 1 (1971)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
                       <span>Escuchar</span>
@@ -199,7 +186,7 @@
                 </article>
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=S2Z8WIlaPH4" target="_blank" rel="noopener noreferrer" aria-label="Escuchar la canción Stiff Upper Lip del álbum Stiff Upper Lip de AC/DC en YouTube (se abre en una pestaña nueva)" title="Escuchar Stiff Upper Lip de AC/DC en YouTube (canción)">
-                    <img src="img/albums/acdc-stiff-upper-lip.jpg" alt="Tapa del disco AC/DC — Stiff Upper Lip (2000)" loading="lazy">
+                    <img src="../../assets/img/albums/acdc-stiff-upper-lip.jpg" alt="Tapa del disco AC/DC — Stiff Upper Lip (2000)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
                       <span>Escuchar</span>
@@ -209,7 +196,7 @@
                 </article>
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=seyCgb9FuHY" target="_blank" rel="noopener noreferrer" aria-label="Escuchar la canción ¿Qué ves? del álbum La Era de la Boludez de Divididos en YouTube (se abre en una pestaña nueva)" title="Escuchar ¿Qué ves? de La Era de la Boludez en YouTube (canción)">
-                    <img src="img/albums/divididos-la-era-de-la-boludez.jpg" alt="Tapa del disco Divididos — La Era de la Boludez (1993)" loading="lazy">
+                    <img src="../../assets/img/albums/divididos-la-era-de-la-boludez.jpg" alt="Tapa del disco Divididos — La Era de la Boludez (1993)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
                       <span>Escuchar</span>
@@ -219,7 +206,7 @@
                 </article>
                 <article class="media-card">
                   <a class="media-artwork" href="https://www.youtube.com/watch?v=e7kuO5edHcg" target="_blank" rel="noopener noreferrer" aria-label="Escuchar Llegando los monos de Sumo en YouTube (se abre en una pestaña nueva)" title="Escuchar Llegando los monos de Sumo completo en YouTube">
-                    <img src="img/albums/sumo-llegando-los-monos.jpg" alt="Tapa del disco Sumo — Llegando los monos (1986)" loading="lazy">
+                    <img src="../../assets/img/albums/sumo-llegando-los-monos.jpg" alt="Tapa del disco Sumo — Llegando los monos (1986)" loading="lazy">
                     <span class="media-action">
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg>
                       <span>Escuchar</span>
@@ -240,9 +227,6 @@
       </div>
     </main>
 
-    <footer class="site-footer">
-      <p>DragonByte · Perfil de Ignacio</p>
-      <a href="bitacora.html">Bitácora</a>
-    </footer>
+    <footer class="site-footer" data-site-footer></footer>
   </body>
 </html>

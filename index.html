@@ -11,31 +11,18 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="css/styles.css?v=18">
-    <script src="js/main.js?v=7" defer></script>
+    <link rel="stylesheet" href="assets/css/base.css?v=1">
+    <link rel="stylesheet" href="components/member-photo/member-photo.css?v=1">
+    <link rel="stylesheet" href="assets/css/pages/inicio.css?v=1">
+    <link rel="stylesheet" href="components/header/header.css?v=2">
+    <link rel="stylesheet" href="components/footer/footer.css?v=1">
+    <script src="components/header/header.js?v=1" defer></script>
+    <script src="components/footer/footer.js?v=1" defer></script>
+    <script src="components/member-photo/member-photo.js?v=1" defer></script>
+    <script src="assets/js/pages/inicio.js?v=1" defer></script>
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="DragonByte, inicio">
-        <span class="brand-mark" aria-hidden="true">DB</span>
-        <span>DRAGONBYTE</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu">Menú</button>
-      <nav id="main-menu" class="main-nav" aria-label="Navegación principal">
-        <a class="is-active" href="index.html">Inicio</a>
-        <details class="nav-dropdown">
-          <summary class="nav-dropdown-toggle">Equipo</summary>
-          <ul class="nav-submenu">
-            <li><a href="#equipo">Ver equipo</a></li>
-            <li><a href="sebastian-fernandez.html">Sebastián Fernández</a></li>
-            <li><a href="glaucia-ferreira.html">Glaucia Ferreira</a></li>
-            <li><a href="ignacio-grosman.html">Ignacio Grosman</a></li>
-            <li><a href="andrea-maslucan-moreno.html">Andrea Maslucan Moreno</a></li>
-          </ul>
-        </details>
-        <a href="bitacora.html">Bitácora</a>
-      </nav>
-    </header>
+    <header class="site-header" data-site-header></header>
 
     <main>
       <section class="hero">
@@ -109,12 +96,12 @@
             >
               <img
                 class="portrait-base"
-                src="img/Seba-FaseNormal.png"
+                src="assets/img/perfiles/Seba-FaseNormal.png"
                 alt="Sebastián Fernández en estado base"
               >
               <img
                 class="portrait-transformed"
-                src="img/SebaSsj2.png"
+                src="assets/img/perfiles/SebaSsj2.png"
                 alt=""
                 aria-hidden="true"
               >
@@ -122,12 +109,12 @@
             </button>
             <p class="role">Full Stack</p>
             <h3>Sebastián Fernández</h3>
-            <p class="profile-location"><img src="img/ubicacion.webp" alt="" width="20" height="20"> Buenos Aires</p>
+            <p class="profile-location"><img src="assets/img/iconos/ubicacion.webp" alt="" width="20" height="20"> Buenos Aires</p>
             <a class="member-github profile-github text-link" href="https://github.com/Fernandez-Sebastian" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Sebastián Fernández (abre en otra pestaña)">
-              <img src="img/github.webp" alt="" width="20" height="20">
+              <img src="assets/img/iconos/github.webp" alt="" width="20" height="20">
               <span>Fernandez-Sebastian</span>
             </a>
-            <a class="card-link" href="sebastian-fernandez.html" aria-label="Ver perfil de Sebastián Fernández">Ver perfil <span aria-hidden="true">→</span></a>
+            <a class="card-link" href="pages/equipo/sebastian-fernandez.html" aria-label="Ver perfil de Sebastián Fernández">Ver perfil <span aria-hidden="true">→</span></a>
           </article>
           <article class="member-card">
             <button
@@ -139,12 +126,12 @@
             >
               <img
                 class="portrait-base"
-                src="img/glaucia-ferreira.jpeg"
+                src="assets/img/perfiles/glaucia-ferreira.jpeg"
                 alt="Glaucia Ferreira"
               >
               <img
                 class="portrait-transformed"
-                src="img/glaucia-ferreira-anime.png"
+                src="assets/img/perfiles/glaucia-ferreira-anime.png"
                 alt=""
                 aria-hidden="true"
               >
@@ -152,12 +139,12 @@
             </button>
             <p class="role">Full Stack</p>
             <h3>Glaucia Ferreira</h3>
-            <p class="profile-location"><img src="img/ubicacion.webp" alt="" width="20" height="20"> Buenos Aires</p>
+            <p class="profile-location"><img src="assets/img/iconos/ubicacion.webp" alt="" width="20" height="20"> Buenos Aires</p>
             <a class="member-github profile-github text-link" href="https://github.com/glaucia1906" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Glaucia Ferreira (abre en otra pestaña)">
-              <img src="img/github.webp" alt="" width="20" height="20">
+              <img src="assets/img/iconos/github.webp" alt="" width="20" height="20">
               <span>glaucia1906</span>
             </a>
-            <a class="card-link" href="glaucia-ferreira.html" aria-label="Ver perfil de Glaucia Ferreira">Ver perfil <span aria-hidden="true">→</span></a>
+            <a class="card-link" href="pages/equipo/glaucia-ferreira.html" aria-label="Ver perfil de Glaucia Ferreira">Ver perfil <span aria-hidden="true">→</span></a>
           </article>
           <article class="member-card">
             <button
@@ -169,12 +156,12 @@
             >
               <img
                 class="portrait-base"
-                src="img/Nacho-tranqui.jpg"
+                src="assets/img/perfiles/Nacho-tranqui.jpg"
                 alt="Foto provisoria de Ignacio Grosman"
               >
               <img
                 class="portrait-transformed"
-                src="img/Nacho-super.jpg"
+                src="assets/img/perfiles/Nacho-super.jpg"
                 alt=""
                 aria-hidden="true"
               >
@@ -182,12 +169,12 @@
             </button>
             <p class="role">Full Stack</p>
             <h3>Ignacio Grosman</h3>
-            <p class="profile-location"><img src="img/ubicacion.webp" alt="" width="20" height="20"> Buenos Aires</p>
+            <p class="profile-location"><img src="assets/img/iconos/ubicacion.webp" alt="" width="20" height="20"> Buenos Aires</p>
             <a class="member-github profile-github text-link" href="https://github.com/IgnacioGrosman735" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Ignacio Grosman (abre en otra pestaña)">
-              <img src="img/github.webp" alt="" width="20" height="20">
+              <img src="assets/img/iconos/github.webp" alt="" width="20" height="20">
               <span>IgnacioGrosman735</span>
             </a>
-            <a class="card-link" href="ignacio-grosman.html" aria-label="Ver perfil de Ignacio Grosman">Ver perfil <span aria-hidden="true">→</span></a>
+            <a class="card-link" href="pages/equipo/ignacio-grosman.html" aria-label="Ver perfil de Ignacio Grosman">Ver perfil <span aria-hidden="true">→</span></a>
           </article>
           <article class="member-card">
             <button
@@ -199,12 +186,12 @@
             >
               <img
                 class="portrait-base"
-                src="img/andrea-normal.jpg"
+                src="assets/img/perfiles/andrea-normal.jpg"
                 alt="Andrea Maslucan Moreno en estado base"
               >
               <img
                 class="portrait-transformed"
-                src="img/andrea-anime.jpeg"
+                src="assets/img/perfiles/andrea-anime.jpeg"
                 alt=""
                 aria-hidden="true"
               >
@@ -212,12 +199,12 @@
             </button>
             <p class="role">Full Stack</p>
             <h3>Andrea Maslucan</h3>
-            <p class="profile-location"><img src="img/ubicacion.webp" alt="" width="20" height="20"> Buenos Aires</p>
+            <p class="profile-location"><img src="assets/img/iconos/ubicacion.webp" alt="" width="20" height="20"> Buenos Aires</p>
             <a class="member-github profile-github text-link" href="https://github.com/andreamm-lab" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Andrea Maslucan Moreno (abre en otra pestaña)">
-              <img src="img/github.webp" alt="" width="20" height="20">
+              <img src="assets/img/iconos/github.webp" alt="" width="20" height="20">
               <span>andreamm-lab</span>
             </a>
-            <a class="card-link" href="andrea-maslucan-moreno.html" aria-label="Ver perfil de Andrea Maslucan Moreno">Ver perfil <span aria-hidden="true">→</span></a>
+            <a class="card-link" href="pages/equipo/andrea-maslucan-moreno.html" aria-label="Ver perfil de Andrea Maslucan Moreno">Ver perfil <span aria-hidden="true">→</span></a>
           </article>
         </div>
       </section>
@@ -229,13 +216,10 @@
           Esta primera versión define la estructura del proyecto. En las próximas iteraciones
           agregaremos contenido real, recursos visuales y nuevas funciones.
         </p>
-        <a class="text-link" href="bitacora.html">Seguir el proceso en la bitácora →</a>
+        <a class="text-link" href="pages/bitacora.html">Seguir el proceso en la bitácora →</a>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <p>DragonByte · Desarrollo de Sistemas Web · 2026</p>
-      <a href="bitacora.html">Bitácora</a>
-    </footer>
+    <footer class="site-footer" data-site-footer></footer>
   </body>
 </html>

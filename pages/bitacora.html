@@ -11,38 +11,16 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="css/styles.css?v=23">
-    <script src="js/main.js?v=12" defer></script>
+    <link rel="stylesheet" href="../assets/css/base.css?v=1">
+    <link rel="stylesheet" href="../assets/css/pages/bitacora.css?v=1">
+    <link rel="stylesheet" href="../components/header/header.css?v=2">
+    <link rel="stylesheet" href="../components/footer/footer.css?v=1">
+    <script src="../components/header/header.js?v=1" defer></script>
+    <script src="../components/footer/footer.js?v=1" defer></script>
+    <script src="../assets/js/pages/bitacora.js?v=1" defer></script>
   </head>
   <body>
-    <header id="inicio-bitacora" class="site-header" tabindex="-1">
-      <a class="brand" href="index.html">
-        <span class="brand-mark">DB</span>
-        <span>DRAGONBYTE</span>
-      </a>
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="main-menu"
-      >
-        Menú
-      </button>
-      <nav id="main-menu" class="main-nav" aria-label="Navegación principal">
-        <a href="index.html">Inicio</a>
-        <details class="nav-dropdown">
-          <summary class="nav-dropdown-toggle">Equipo</summary>
-          <ul class="nav-submenu">
-            <li><a href="index.html#equipo">Ver equipo</a></li>
-            <li><a href="sebastian-fernandez.html">Sebastián Fernández</a></li>
-            <li><a href="glaucia-ferreira.html">Glaucia Ferreira</a></li>
-            <li><a href="ignacio-grosman.html">Ignacio Grosman</a></li>
-            <li><a href="andrea-maslucan-moreno.html">Andrea Maslucan Moreno</a></li>
-          </ul>
-        </details>
-        <a class="is-active" href="bitacora.html">Bitácora</a>
-      </nav>
-    </header>
+    <header id="inicio-bitacora" class="site-header" tabindex="-1" data-site-header></header>
 
     <main class="inner-main">
       <header class="page-intro bitacora-intro">
@@ -271,7 +249,7 @@
       </dialog>
 
       <div class="page-actions">
-        <a class="button button-secondary" href="index.html">← Volver al inicio</a>
+        <a class="button button-secondary" href="../index.html">← Volver al inicio</a>
         <button
           id="log-add-event"
           class="button button-primary log-add-event"
@@ -291,9 +269,6 @@
       <span aria-hidden="true">&#8593;</span>
     </a>
 
-    <footer class="site-footer bitacora-footer">
-      <p>DragonByte · Bitácora de desarrollo</p>
-      <a href="index.html">Inicio</a>
-    </footer>
+    <footer class="site-footer bitacora-footer" data-site-footer></footer>
   </body>
 </html>

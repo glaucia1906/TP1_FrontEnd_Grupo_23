@@ -1,0 +1,133 @@
+/* Retratos compartidos y transformación de fotos. */
+
+.member-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  flex: 0 0 auto;
+  margin-bottom: 22px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-2);
+}
+
+.member-photo img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.member-photo-transform {
+  padding: 0;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  isolation: isolate;
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+
+.member-photo-transform:hover,
+.member-photo-transform:focus-visible {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 2px rgba(73, 229, 255, .18), 0 0 28px rgba(73, 229, 255, .18);
+  transform: translateY(-2px);
+}
+
+.member-photo-transform:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 3px;
+}
+
+.member-photo-transform img {
+  transition: opacity .55s ease, transform .7s cubic-bezier(.2, .8, .2, 1), filter .55s ease;
+}
+
+.member-photo-transform .portrait-base {
+  object-position: center 38%;
+}
+
+.member-photo-transform .portrait-transformed {
+  object-position: center 44%;
+  opacity: 0;
+  transform: scale(1.08);
+  filter: brightness(1.25) saturate(1.2);
+}
+
+.member-photo-transform::before,
+.member-photo-transform::after {
+  position: absolute;
+  z-index: 2;
+  content: "";
+  pointer-events: none;
+  opacity: 0;
+}
+
+.member-photo-transform::before {
+  inset: -18%;
+  background:
+    radial-gradient(ellipse at center, transparent 45%, rgba(255, 216, 77, .24) 58%, transparent 72%),
+    conic-gradient(from 20deg, transparent, rgba(73, 229, 255, .38), transparent 18%, rgba(255, 138, 24, .5), transparent 38%);
+  mix-blend-mode: screen;
+}
+
+.member-photo-transform::after {
+  inset: 0;
+  border: 2px solid rgba(255, 216, 77, .8);
+  box-shadow: inset 0 0 24px rgba(255, 216, 77, .42), 0 0 24px rgba(255, 138, 24, .52);
+}
+
+.member-photo-transform.is-transformed .portrait-base {
+  opacity: 0;
+  transform: scale(.96);
+}
+
+.member-photo-transform.is-transformed .portrait-transformed {
+  opacity: 1;
+  transform: scale(1);
+  filter: none;
+}
+
+.member-photo-transform.is-transformed::before {
+  opacity: 1;
+  animation: aura-flow 2.8s linear infinite;
+}
+
+.member-photo-transform.is-transformed::after {
+  opacity: 1;
+  animation: aura-pulse 1.35s ease-in-out infinite alternate;
+}
+
+.transform-hint {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 3;
+  padding: 5px 9px;
+  border: 1px solid rgba(73, 229, 255, .6);
+  border-radius: 999px;
+  background: rgba(7, 11, 24, .82);
+  color: var(--cyan);
+  font: 700 .66rem var(--display);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  backdrop-filter: blur(5px);
+}
+
+@keyframes aura-flow {
+  to {
+    transform: rotate(1turn) scale(1.05);
+  }
+}
+
+@keyframes aura-pulse {
+  to {
+    border-color: var(--cyan);
+    box-shadow: inset 0 0 34px rgba(73, 229, 255, .4), 0 0 32px rgba(255, 216, 77, .62);
+  }
+}
