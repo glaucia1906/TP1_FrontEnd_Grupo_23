@@ -1,0 +1,7 @@
+# Historial local del editor
+.history/
+
+# Archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
