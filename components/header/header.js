@@ -23,7 +23,7 @@
           <li><a data-site-path="pages/equipo/andrea-maslucan-moreno.html">Andrea Maslucan Moreno</a></li>
         </ul>
       </details>
-      <a data-site-path="index.html#esferas">Arcade</a>
+      <a data-site-path="index.html#arcade">Arcade</a>
       <a data-site-path="pages/bitacora.html">Bitácora</a>
     </nav>
   `;

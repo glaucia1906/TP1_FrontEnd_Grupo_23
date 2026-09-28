@@ -22,7 +22,7 @@
           <ul class="footer-links">
             <li><a data-site-path="index.html">Inicio</a></li>
             <li><a data-site-path="index.html#equipo">Equipo</a></li>
-            <li><a data-site-path="index.html#esferas">Arcade</a></li>
+            <li><a data-site-path="index.html#arcade">Arcade</a></li>
             <li><a data-site-path="pages/bitacora.html">Bitácora</a></li>
           </ul>
         </nav>
