@@ -14,7 +14,9 @@
     const dateFilter = document.querySelector('#log-filter-date');
     const sortOrder = document.querySelector('#log-sort-order');
     const filterSummary = document.querySelector('#log-filter-summary');
+    const viewButtons = document.querySelectorAll('[data-log-view]');
     const storageKey = 'dragonbyte-logbook-v1';
+    const viewStorageKey = 'dragonbyte-logbook-view';
     // Validación local del formulario; no reemplaza la autenticación en un servidor.
     const publicationKey = window.DragonByteAccess?.publicationKey;
     const authKeyField = form.elements.namedItem('authKey');
@@ -118,6 +120,14 @@
       updateTimeline();
     }
 
+    function setView(view) {
+      const selectedView = view === 'cards' ? 'cards' : 'list';
+      entries.dataset.view = selectedView;
+      viewButtons.forEach((button) => {
+        button.setAttribute('aria-pressed', String(button.dataset.logView === selectedView));
+      });
+    }
+
     function nextNumber() {
       return Math.max(0, ...originalNumbers, ...savedEntries.map((entry) => entry.number)) + 1;
     }
@@ -141,6 +151,23 @@
     } catch {
       status.textContent = 'No se pudieron recuperar las entradas guardadas en este navegador.';
     }
+
+    try {
+      setView(localStorage.getItem(viewStorageKey));
+    } catch {
+      setView('list');
+    }
+
+    viewButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setView(button.dataset.logView);
+        try {
+          localStorage.setItem(viewStorageKey, entries.dataset.view);
+        } catch {
+          // El cambio de vista sigue disponible si el navegador impide guardar preferencias.
+        }
+      });
+    });
 
     updateDateFilter();
     applyFilters();
