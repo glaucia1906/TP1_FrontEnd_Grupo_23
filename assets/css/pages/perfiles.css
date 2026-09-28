@@ -1,5 +1,82 @@
 /* Perfiles: distribucion, datos personales y favoritos. */
 
+.profile-main {
+  padding-top: clamp(24px, 3vw, 40px);
+}
+
+.profile-carousel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(8px, 2vw, 28px);
+  max-width: 1080px;
+  margin: 0 auto clamp(24px, 3vw, 40px);
+  padding: 8px 0;
+  text-align: center;
+}
+
+.profile-carousel-link,
+.profile-carousel-current {
+  display: grid;
+  min-width: 0;
+  min-height: 48px;
+  align-items: center;
+  padding: 8px 0;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.profile-carousel-link {
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: clamp(.8rem, 1.5vw, 1.1rem);
+  font-weight: 500;
+  text-decoration: none;
+  filter: blur(1.1px);
+  opacity: .65;
+  transition: color .25s ease, filter .25s ease, opacity .25s ease;
+}
+
+.profile-carousel-identity {
+  display: grid;
+  min-width: 0;
+  gap: 10px;
+  padding: 8px 0;
+}
+
+.profile-carousel-current {
+  margin: 0;
+  padding: 0;
+  color: #ffe6a3;
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.035em;
+  text-shadow: 0 2px 24px rgba(255, 216, 77, .12);
+}
+
+.profile-carousel-role {
+  color: var(--cyan);
+  font-size: clamp(.7rem, 1.2vw, .85rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.profile-carousel-link:is(:hover, :focus-visible) {
+  color: var(--cyan);
+  filter: blur(0);
+  opacity: 1;
+}
+
+.profile-carousel-link:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
 .profile-shell {
   display: grid;
   grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr);
@@ -42,11 +119,11 @@
   aspect-ratio: 1 / 1;
 }
 
-.profile-card h1 {
-  font-size: clamp(1.75rem, 3vw, 2.6rem);
+.profile-card-name {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   line-height: 1.2;
   overflow-wrap: anywhere;
-  text-wrap: balance;
 }
 
 .profile-card .eyebrow {
@@ -483,6 +560,10 @@
 }
 
 @media (max-width: 380px) {
+  .profile-carousel-current {
+    font-size: 1.1rem;
+  }
+
   .media-grid {
     grid-template-columns: 1fr;
   }

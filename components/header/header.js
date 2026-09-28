@@ -27,7 +27,7 @@
           <li><a data-site-path="pages/equipo/sebastian-fernandez.html"><span class="nav-member-initials" aria-hidden="true">SF</span><span>Sebastián Fernández</span></a></li>
           <li><a data-site-path="pages/equipo/glaucia-ferreira.html"><span class="nav-member-initials" aria-hidden="true">GF</span><span>Glaucia Ferreira</span></a></li>
           <li><a data-site-path="pages/equipo/ignacio-grosman.html"><span class="nav-member-initials" aria-hidden="true">IG</span><span>Ignacio Grosman</span></a></li>
-          <li><a data-site-path="pages/equipo/andrea-maslucan-moreno.html"><span class="nav-member-initials" aria-hidden="true">AM</span><span>Andrea Maslucan Moreno</span></a></li>
+          <li><a data-site-path="pages/equipo/andrea-maslucan-moreno.html"><span class="nav-member-initials" aria-hidden="true">AM</span><span>Andrea Maslucan</span></a></li>
         </ul>
       </details>
       <div class="nav-bitacora">
