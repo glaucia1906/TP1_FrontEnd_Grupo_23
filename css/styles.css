@@ -1253,7 +1253,7 @@ body.log-dialog-open {
   aspect-ratio: 3 / 4;
 }
 
-.profile-photo-glaucia img {
+.profile-photo-glaucia .portrait-base {
   object-position: center top;
 }
 
@@ -1267,6 +1267,37 @@ body.log-dialog-open {
 
 .profile-meta {
   color: var(--muted);
+}
+
+.profile-age {
+  margin-bottom: 4px;
+}
+
+.profile-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 0;
+}
+
+.profile-location img {
+  flex-shrink: 0;
+}
+
+.profile-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.profile-github img {
+  flex-shrink: 0;
+}
+
+.profile-github span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .profile-details h2 {
