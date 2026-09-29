@@ -28,14 +28,20 @@
 }
 
 .profile-carousel-link {
-  border-radius: 8px;
-  color: var(--muted);
-  font-size: clamp(.8rem, 1.5vw, 1.1rem);
-  font-weight: 500;
+  place-self: center;
+  place-items: center;
+  width: clamp(48px, 4.5vw, 56px);
+  aspect-ratio: 1;
+  padding: 0;
+  color: #858585;
   text-decoration: none;
-  filter: blur(1.1px);
-  opacity: .65;
-  transition: color .25s ease, filter .25s ease, opacity .25s ease;
+  transition: color .2s ease, transform .2s ease;
+}
+
+.profile-carousel-link svg {
+  width: 26px;
+  height: 26px;
+  transition: transform .2s ease;
 }
 
 .profile-carousel-identity {
@@ -68,8 +74,18 @@
 
 .profile-carousel-link:is(:hover, :focus-visible) {
   color: var(--cyan);
-  filter: blur(0);
-  opacity: 1;
+}
+
+.profile-carousel-previous:is(:hover, :focus-visible) svg {
+  transform: translateX(-2px);
+}
+
+.profile-carousel-next:is(:hover, :focus-visible) svg {
+  transform: translateX(2px);
+}
+
+.profile-carousel-link:active {
+  transform: scale(.95);
 }
 
 .profile-carousel-link:focus-visible {
@@ -584,6 +600,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .profile-carousel-link:active,
+  .profile-carousel-link:is(:hover, :focus-visible) svg,
   .chip-list li:hover,
   .media-card:hover,
   .media-card:focus-within,
