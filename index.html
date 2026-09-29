@@ -15,15 +15,16 @@
     <link rel="stylesheet" href="assets/css/base.css?v=1">
     <link rel="stylesheet" href="components/member-photo/member-photo.css?v=1">
     <link rel="stylesheet" href="assets/css/pages/inicio.css?v=4">
-    <link rel="stylesheet" href="components/bowling/bowling.css?v=13">
-    <link rel="stylesheet" href="components/header/header.css?v=12">
+    <link rel="stylesheet" href="components/bowling/bowling.css?v=22">
+    <link rel="stylesheet" href="components/header/header.css?v=30">
     <link rel="stylesheet" href="components/footer/footer.css?v=1">
-    <script src="components/header/header.js?v=8" defer></script>
+    <script src="components/header/header.js?v=20" defer></script>
     <script src="components/footer/footer.js?v=3" defer></script>
     <script src="components/member-photo/member-photo.js?v=1" defer></script>
     <script src="assets/js/pages/inicio.js?v=1" defer></script>
     <script src="assets/js/bitacora-access.js?v=1" defer></script>
-    <script src="components/bowling/bowling.js?v=6" defer></script>
+    <script src="components/bowling/bowling-audio.js?v=5" defer></script>
+    <script src="components/bowling/bowling.js?v=10" defer></script>
   </head>
   <body>
     <header class="site-header" data-site-header></header>
@@ -113,7 +114,7 @@
             </button>
             <p class="role">Full Stack</p>
             <h3>Sebastián Fernández</h3>
-            <p class="profile-location"><img src="assets/img/iconos/ubicacion.webp" alt="" width="20" height="20"> Buenos Aires</p>
+            <p class="profile-location"><img src="assets/img/iconos/ubicacion.webp" alt="" width="20" height="20"> Bahía Blanca</p>
             <a class="member-github profile-github text-link" href="https://github.com/Fernandez-Sebastian" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Sebastián Fernández (abre en otra pestaña)">
               <img src="assets/img/iconos/github.webp" alt="" width="20" height="20">
               <span>Fernandez-Sebastian</span>
@@ -143,7 +144,7 @@
             </button>
             <p class="role">Full Stack</p>
             <h3>Glaucia Ferreira</h3>
-            <p class="profile-location"><img src="assets/img/iconos/ubicacion.webp" alt="" width="20" height="20"> Buenos Aires</p>
+            <p class="profile-location"><img src="assets/img/iconos/ubicacion.webp" alt="" width="20" height="20"> CABA</p>
             <a class="member-github profile-github text-link" href="https://github.com/glaucia1906" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Glaucia Ferreira (abre en otra pestaña)">
               <img src="assets/img/iconos/github.webp" alt="" width="20" height="20">
               <span>glaucia1906</span>
@@ -173,7 +174,7 @@
             </button>
             <p class="role">Full Stack</p>
             <h3>Ignacio Grosman</h3>
-            <p class="profile-location"><img src="assets/img/iconos/ubicacion.webp" alt="" width="20" height="20"> Buenos Aires</p>
+            <p class="profile-location"><img src="assets/img/iconos/ubicacion.webp" alt="" width="20" height="20"> Vicente López</p>
             <a class="member-github profile-github text-link" href="https://github.com/IgnacioGrosman735" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Ignacio Grosman (abre en otra pestaña)">
               <img src="assets/img/iconos/github.webp" alt="" width="20" height="20">
               <span>IgnacioGrosman735</span>
@@ -203,7 +204,7 @@
             </button>
             <p class="role">Full Stack</p>
             <h3>Andrea Maslucan</h3>
-            <p class="profile-location"><img src="assets/img/iconos/ubicacion.webp" alt="" width="20" height="20"> Buenos Aires</p>
+            <p class="profile-location"><img src="assets/img/iconos/ubicacion.webp" alt="" width="20" height="20"> CABA</p>
             <a class="member-github profile-github text-link" href="https://github.com/andreamm-lab" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Andrea Maslucan Moreno (abre en otra pestaña)">
               <img src="assets/img/iconos/github.webp" alt="" width="20" height="20">
               <span>andreamm-lab</span>
@@ -214,9 +215,16 @@
       </section>
 
       <section id="esferas" class="section bowling-section" data-bowling aria-labelledby="bowling-title">
-        <div class="section-heading">
-          <p class="eyebrow">EL DESAFÍO DE LAS ESFERAS</p>
-          <h2 id="bowling-title">Tu puntería desbloquea el código.</h2>
+        <div class="section-heading bowling-heading">
+          <div class="bowling-heading-copy">
+            <p class="eyebrow">EL DESAFÍO DE LAS ESFERAS</p>
+            <h2 id="bowling-title">Tu destreza desbloquea el código.</h2>
+          </div>
+          <aside class="bowling-key-notice" aria-label="Premio del desafío">
+            <span class="bowling-key-smoke" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <img class="bowling-key-image" src="assets/img/iconos/llave-bitacora.png?v=3" alt="" width="96" height="96">
+            <p>¡La llave de la bitácora <strong>es para el ganador!</strong></p>
+          </aside>
         </div>
         <div id="arcade" class="bowling-game" data-phase="idle">
           <div class="bowling-topbar">
@@ -233,7 +241,10 @@
                   <li aria-label="Tiro 2 disponible"><span class="bowling-mini-orb" aria-hidden="true">★</span></li>
                   <li aria-label="Tiro 3 disponible"><span class="bowling-mini-orb" aria-hidden="true">★</span></li>
                 </ol>
+                <p id="bowling-attempts-remaining" class="bowling-attempts-remaining">3 disponibles</p>
               </div>
+            </div>
+            <div class="bowling-toolbar">
               <button id="bowling-help-button" class="button bowling-help-button" type="button" aria-haspopup="dialog" aria-controls="bowling-help-dialog">
                 <span class="bowling-help-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
@@ -241,6 +252,14 @@
                   </svg>
                 </span>
                 <span class="bowling-help-label">Ayuda</span>
+              </button>
+              <button id="bowling-sound" class="bowling-sound" type="button" aria-label="Sonido del bowling" aria-pressed="true" title="Silenciar sonido">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M11 5 6 9H3v6h3l5 4V5Z"></path>
+                  <g class="bowling-sound-on"><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"></path></g>
+                  <g class="bowling-sound-off"><path d="m16 9 6 6m0-6-6 6"></path></g>
+                </svg>
+                <span data-sound-label>Sonido activado</span>
               </button>
             </div>
           </div>
@@ -278,11 +297,19 @@
               </div>
             </div>
             <div class="bowling-overlay">
-              <div class="bowling-banner" role="group" aria-labelledby="bowling-overlay-title" aria-describedby="bowling-overlay-message">
+              <div class="bowling-banner" role="dialog" aria-modal="false" aria-labelledby="bowling-overlay-title" aria-describedby="bowling-overlay-message">
                 <div class="bowling-banner-orb" aria-hidden="true">★★★★</div>
                 <p id="bowling-overlay-eyebrow" class="eyebrow">DRAGONBYTE ARCADE</p>
                 <h3 id="bowling-overlay-title" tabindex="-1">¿Listo para jugar?</h3>
                 <p id="bowling-overlay-message">Tu próxima misión empieza acá.</p>
+                <div id="bowling-shot-summary" class="bowling-shot-summary" hidden>
+                  <ol id="bowling-result-attempts" class="bowling-attempts bowling-result-attempts" aria-label="Estado de los tres intentos">
+                    <li><span class="bowling-mini-orb" aria-hidden="true">★</span></li>
+                    <li><span class="bowling-mini-orb" aria-hidden="true">★</span></li>
+                    <li><span class="bowling-mini-orb" aria-hidden="true">★</span></li>
+                  </ol>
+                  <p id="bowling-shots-remaining">2 intentos disponibles</p>
+                </div>
                 <div id="bowling-reward" class="bowling-reward" hidden>
                   <p>CLAVE DE LA BITÁCORA</p>
                   <div class="bowling-code-row">
@@ -319,14 +346,14 @@
             <h2 id="bowling-help-title">Cómo jugar</h2>
             <button class="bowling-help-close" type="button" aria-label="Cerrar ayuda" data-close-help>×</button>
           </div>
-          <p>Elegí «Empezar partida» y derribá los <strong>10 palos en 3 lanzamientos</strong> para descubrir la clave de autenticación de la bitácora. Los palos derribados se conservan entre tiros.</p>
+          <p>Elegí «Empezar partida» y derribá los <strong>10 palos en 3 lanzamientos</strong> para descubrir la clave de autenticación de la bitácora. Los palos derribados se conservan entre tiros. Cada lanzamiento consume una de las tres esferas: las usadas quedan grises y tachadas.</p>
           <ol class="bowling-help-steps">
             <li><strong>Apuntá.</strong> Hacé clic en la pista y mové la mira con las cuatro flechas del teclado. En celular, usá los botones de dirección.</li>
             <li><strong>Cargá y lanzá.</strong> Mantené presionado «Cargar esfera» con el mouse o el dedo. Soltá para lanzar con la potencia indicada.</li>
             <li><strong>Elegí la potencia.</strong> La barra vertical se llena de abajo hacia arriba. La zona ideal está entre 70 y 90% para lograr una reacción en cadena.</li>
             <li><strong>También con teclado.</strong> Con la pista o el botón de lanzamiento enfocados, mantené Espacio y soltá para lanzar. Enter lanza al 80% y Esc cancela la carga.</li>
           </ol>
-          <p>«Reiniciar partida» vuelve al cartel de inicio. Al finalizar, «Volver a jugar» comienza una partida nueva con tres intentos. Cerrá esta ayuda con Esc o con «Entendido».</p>
+          <p>Después de cada tiro, el resultado aparece durante dos segundos y se cierra automáticamente. También podés cerrarlo antes con Esc. «Reiniciar partida» vuelve al cartel de inicio. Al finalizar, «Volver a jugar» comienza una partida nueva con tres intentos. Cerrá esta ayuda con Esc o con «Entendido».</p>
           <button class="button button-primary" type="button" data-close-help>Entendido</button>
         </dialog>
         <noscript><p>Activá JavaScript para jugar al desafío de las esferas.</p></noscript>

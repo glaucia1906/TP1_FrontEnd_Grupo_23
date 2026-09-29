@@ -7,24 +7,37 @@
 
   header.innerHTML = `
     <a class="brand" data-site-path="index.html" aria-label="DragonByte, inicio">
-      <span class="brand-mark" aria-hidden="true">DB</span>
+      <img class="brand-mark" src="${new URL('assets/img/iconos/dragonbyte-header-3d.png', siteRoot).href}" alt="" width="42" height="42">
       <span>DRAGONBYTE</span>
     </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu">Menú</button>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu">
+      <span class="menu-toggle-icon" aria-hidden="true"></span>
+      <span class="menu-toggle-label">Menú</span>
+    </button>
     <nav id="main-menu" class="main-nav" aria-label="Navegación principal">
-      <a data-site-path="index.html">Inicio</a>
+      <a class="nav-link" data-site-path="index.html">
+        <span>Inicio</span>
+      </a>
       <details class="nav-dropdown">
-        <summary class="nav-dropdown-toggle">Equipo</summary>
+        <summary class="nav-dropdown-toggle">
+          <span>Equipo</span>
+        </summary>
         <ul class="nav-submenu">
-          <li><a data-site-path="index.html#equipo">Ver equipo</a></li>
-          <li><a data-site-path="pages/equipo/sebastian-fernandez.html">Sebastián Fernández</a></li>
-          <li><a data-site-path="pages/equipo/glaucia-ferreira.html">Glaucia Ferreira</a></li>
-          <li><a data-site-path="pages/equipo/ignacio-grosman.html">Ignacio Grosman</a></li>
-          <li><a data-site-path="pages/equipo/andrea-maslucan-moreno.html">Andrea Maslucan Moreno</a></li>
+          <li class="nav-submenu-overview"><a data-site-path="index.html#equipo"><span>Ver equipo</span><span aria-hidden="true">→</span></a></li>
+          <li><a data-site-path="pages/equipo/sebastian-fernandez.html"><span class="nav-member-initials" aria-hidden="true">SF</span><span>Sebastián Fernández</span></a></li>
+          <li><a data-site-path="pages/equipo/glaucia-ferreira.html"><span class="nav-member-initials" aria-hidden="true">GF</span><span>Glaucia Ferreira</span></a></li>
+          <li><a data-site-path="pages/equipo/ignacio-grosman.html"><span class="nav-member-initials" aria-hidden="true">IG</span><span>Ignacio Grosman</span></a></li>
+          <li><a data-site-path="pages/equipo/andrea-maslucan-moreno.html"><span class="nav-member-initials" aria-hidden="true">AM</span><span>Andrea Maslucan</span></a></li>
         </ul>
       </details>
-      <a data-site-path="index.html#arcade">Arcade</a>
-      <a data-site-path="pages/bitacora.html">Bitácora</a>
+      <div class="nav-bitacora">
+        <a class="nav-link" data-site-path="pages/bitacora.html">
+          <span>Bitácora</span>
+        </a>
+        <a class="nav-key-link" data-site-path="index.html#arcade" aria-label="Jugar para conseguir la llave de la bitácora" title="Conseguir la llave de la bitácora">
+          <img src="${new URL('assets/img/iconos/llave-bitacora.png?v=3', siteRoot).href}" alt="" width="40" height="40">
+        </a>
+      </div>
     </nav>
   `;
 
@@ -33,8 +46,11 @@
   });
 
   const menuButton = header.querySelector('.menu-toggle');
+  const menuLabel = menuButton.querySelector('.menu-toggle-label');
   const menu = header.querySelector('.main-nav');
   const teamDropdown = menu.querySelector('.nav-dropdown');
+  let pointerInTeam = false;
+  let teamCloseTimer;
   const currentPath = window.location.pathname === siteRoot.pathname
     ? new URL('index.html', siteRoot).pathname
     : window.location.pathname;
@@ -50,16 +66,40 @@
     teamDropdown.querySelector('summary').classList.add('is-active');
   }
 
-  function closeNavigation() {
+  function closeTeamDropdown() {
+    window.clearTimeout(teamCloseTimer);
     teamDropdown.open = false;
-    menu.classList.remove('is-open');
-    menuButton.setAttribute('aria-expanded', 'false');
+  }
+
+  teamDropdown.addEventListener('pointerenter', (event) => {
+    if (event.pointerType !== 'mouse') return;
+    pointerInTeam = true;
+    window.clearTimeout(teamCloseTimer);
+    teamDropdown.open = true;
+  });
+
+  teamDropdown.addEventListener('pointerleave', (event) => {
+    if (event.pointerType !== 'mouse') return;
+    pointerInTeam = false;
+    // Dar margen para cruzar al panel sin interrumpir la navegación por teclado.
+    teamCloseTimer = window.setTimeout(() => {
+      if (!teamDropdown.querySelector(':focus-visible')) closeTeamDropdown();
+    }, 160);
+  });
+
+  function setNavigationOpen(isOpen) {
+    menu.classList.toggle('is-open', isOpen);
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+    menuLabel.textContent = isOpen ? 'Cerrar' : 'Menú';
+    if (!isOpen) closeTeamDropdown();
+  }
+
+  function closeNavigation() {
+    setNavigationOpen(false);
   }
 
   menuButton.addEventListener('click', () => {
-    const isOpen = menu.classList.toggle('is-open');
-    menuButton.setAttribute('aria-expanded', String(isOpen));
-    if (!isOpen) teamDropdown.open = false;
+    setNavigationOpen(!menu.classList.contains('is-open'));
   });
 
   menu.addEventListener('click', (event) => {
@@ -76,7 +116,7 @@
     if (event.key !== 'Escape') return;
 
     if (teamDropdown.open) {
-      teamDropdown.open = false;
+      closeTeamDropdown();
       teamDropdown.querySelector('summary').focus();
     } else if (menu.classList.contains('is-open')) {
       closeNavigation();
@@ -85,6 +125,6 @@
   });
 
   teamDropdown.addEventListener('focusout', (event) => {
-    if (!teamDropdown.contains(event.relatedTarget)) teamDropdown.open = false;
+    if (!teamDropdown.contains(event.relatedTarget) && !pointerInTeam) closeTeamDropdown();
   });
 })();

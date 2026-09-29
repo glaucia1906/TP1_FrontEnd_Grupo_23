@@ -13,13 +13,13 @@
       rel="stylesheet"
     >
     <link rel="stylesheet" href="../assets/css/base.css?v=1">
-    <link rel="stylesheet" href="../assets/css/pages/bitacora.css?v=3">
-    <link rel="stylesheet" href="../components/header/header.css?v=12">
+    <link rel="stylesheet" href="../assets/css/pages/bitacora.css?v=4">
+    <link rel="stylesheet" href="../components/header/header.css?v=30">
     <link rel="stylesheet" href="../components/footer/footer.css?v=1">
-    <script src="../components/header/header.js?v=8" defer></script>
+    <script src="../components/header/header.js?v=20" defer></script>
     <script src="../components/footer/footer.js?v=3" defer></script>
     <script src="../assets/js/bitacora-access.js?v=1" defer></script>
-    <script src="../assets/js/pages/bitacora.js?v=4" defer></script>
+    <script src="../assets/js/pages/bitacora.js?v=6" defer></script>
   </head>
   <body>
     <header id="inicio-bitacora" class="site-header" tabindex="-1" data-site-header></header>
@@ -297,17 +297,30 @@
 
       </section>
 
-      <dialog id="log-dialog" class="log-dialog" aria-labelledby="log-dialog-title" aria-describedby="log-form-note">
+      <dialog id="log-dialog" class="log-dialog" data-step="verify" aria-labelledby="log-dialog-title" aria-describedby="log-auth-note">
         <div class="log-dialog-header">
           <div>
-            <p class="eyebrow">REGISTRO DE MISIÓN</p>
-            <h2 id="log-dialog-title">Nueva entrada</h2>
+            <p id="log-dialog-step" class="eyebrow">PASO 1 DE 2</p>
+            <h2 id="log-dialog-title">Verificar clave</h2>
           </div>
-          <button class="log-dialog-close" type="button" aria-label="Cerrar formulario">
+          <button class="log-dialog-close" type="button" aria-label="Cerrar nueva entrada">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <form id="log-form" class="log-form">
+        <form id="log-auth-form" class="log-form">
+          <p id="log-auth-note" class="log-form-note">Pegá tu código de acceso para habilitar una nueva entrada.</p>
+          <div class="log-field">
+            <label for="log-auth-key">Código de acceso</label>
+            <input id="log-auth-key" name="authKey" type="password" autocomplete="off" spellcheck="false" placeholder="Pegá tu código acá" aria-describedby="log-auth-help log-auth-error" required autofocus>
+            <p id="log-auth-help" class="log-form-note"><a href="../index.html#arcade">Conseguí tu código de acceso.</a></p>
+            <p id="log-auth-error" class="log-form-error" role="alert" hidden></p>
+          </div>
+          <div class="log-form-actions">
+            <button class="button button-secondary" id="log-auth-cancel" type="button">Cancelar</button>
+            <button class="button button-primary" type="submit">Verificar y continuar</button>
+          </div>
+        </form>
+        <form id="log-form" class="log-form" hidden>
           <div class="log-form-row">
             <div class="log-field">
               <label for="log-number">Número del evento</label>
@@ -315,7 +328,7 @@
             </div>
             <div class="log-field">
               <label for="log-type">Tipo de evento</label>
-              <select id="log-type" name="type" required autofocus>
+              <select id="log-type" name="type" required>
                 <option value="" disabled selected>Seleccionar tipo</option>
                 <option>Inicio</option>
                 <option>Revisión</option>
@@ -344,11 +357,6 @@
           <div class="log-field">
             <label for="log-next-step">Próximo paso</label>
             <textarea id="log-next-step" name="nextStep" rows="2" maxlength="2000" placeholder="¿Cómo van a continuar?" required></textarea>
-          </div>
-          <div class="log-field">
-            <label for="log-auth-key">Clave de autenticación</label>
-            <input id="log-auth-key" name="authKey" type="password" autocomplete="off" placeholder="Ingresá la clave del equipo" aria-describedby="log-auth-help" required>
-            <p id="log-auth-help" class="log-form-note"><a href="../index.html#arcade">Descubrí la clave jugando al bowling de esferas.</a></p>
           </div>
           <p id="log-form-note" class="log-form-note">Las nuevas entradas se guardan en este navegador.</p>
           <div class="log-form-actions">

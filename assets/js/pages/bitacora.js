@@ -4,7 +4,8 @@
     const timeline = document.querySelector('.log-timeline');
     const dialog = document.querySelector('#log-dialog');
     const form = document.querySelector('#log-form');
-    if (!entries || !timeline || !dialog || !form) return;
+    const authForm = document.querySelector('#log-auth-form');
+    if (!entries || !timeline || !dialog || !form || !authForm) return;
 
     const events = timeline.querySelector('.log-timeline-events');
     const addButtons = document.querySelectorAll('.log-timeline-add, #log-add-event');
@@ -19,13 +20,17 @@
     const viewStorageKey = 'dragonbyte-logbook-view';
     // Validación local del formulario; no reemplaza la autenticación en un servidor.
     const publicationKey = window.DragonByteAccess?.publicationKey;
-    const authKeyField = form.elements.namedItem('authKey');
+    const authKeyField = authForm.elements.namedItem('authKey');
+    const authError = document.querySelector('#log-auth-error');
+    const dialogTitle = document.querySelector('#log-dialog-title');
+    const dialogStep = document.querySelector('#log-dialog-step');
     const eventTypes = ['Inicio', 'Revisión', 'Diseño', 'Integración', 'Desarrollo'];
     const textLimits = { title: 120, description: 3000, decisions: 2000, nextStep: 2000 };
     const formatNumber = (number) => String(number).padStart(2, '0');
     const originalNumbers = new Set(Array.from(entries.querySelectorAll('.log-date span'),
       (label) => Number(label.textContent)));
     let savedEntries = [];
+    let keyVerified = false;
 
     function isValidEntry(entry) {
       if (!entry || !Number.isSafeInteger(entry.number) || entry.number < 1) return false;
@@ -182,9 +187,27 @@
       document.getElementById(link.hash.slice(1))?.focus({ preventScroll: true });
     });
 
+    function clearAuthError() {
+      authError.textContent = '';
+      authError.hidden = true;
+      authKeyField.removeAttribute('aria-invalid');
+    }
+
+    function setDialogStep(verified) {
+      keyVerified = verified;
+      authForm.hidden = verified;
+      form.hidden = !verified;
+      dialog.dataset.step = verified ? 'entry' : 'verify';
+      dialogTitle.textContent = verified ? 'Nueva entrada' : 'Verificar clave';
+      dialogStep.textContent = verified ? 'PASO 2 DE 2' : 'PASO 1 DE 2';
+      dialog.setAttribute('aria-describedby', verified ? 'log-form-note' : 'log-auth-note');
+    }
+
     function openLogDialog() {
+      authForm.reset();
+      clearAuthError();
+      setDialogStep(false);
       form.reset();
-      authKeyField.setCustomValidity('');
       Object.keys(textLimits).forEach((name) => form.elements.namedItem(name).setCustomValidity(''));
       form.elements.namedItem('number').value = formatNumber(nextNumber());
       const today = new Date();
@@ -192,19 +215,40 @@
         `${today.getFullYear()}-${formatNumber(today.getMonth() + 1)}-${formatNumber(today.getDate())}`;
       dialog.showModal();
       document.body.classList.add('log-dialog-open');
+      authKeyField.focus();
     }
 
     addButtons.forEach((button) => button.addEventListener('click', openLogDialog));
 
     dialog.querySelector('.log-dialog-close').addEventListener('click', () => dialog.close());
     document.querySelector('#log-cancel').addEventListener('click', () => dialog.close());
+    document.querySelector('#log-auth-cancel').addEventListener('click', () => dialog.close());
     dialog.addEventListener('close', () => {
       document.body.classList.remove('log-dialog-open');
-      authKeyField.value = '';
-      authKeyField.setCustomValidity('');
+      authForm.reset();
+      clearAuthError();
+      setDialogStep(false);
     });
 
-    authKeyField.addEventListener('input', () => authKeyField.setCustomValidity(''));
+    authKeyField.addEventListener('input', clearAuthError);
+
+    authForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!publicationKey || authKeyField.value.trim() !== publicationKey) {
+        authError.hidden = false;
+        authError.textContent = publicationKey
+          ? 'El código es incorrecto. Revisalo y volvé a intentarlo.'
+          : 'No se pudo cargar la clave. Recargá la página para volver a intentarlo.';
+        authKeyField.setAttribute('aria-invalid', 'true');
+        authKeyField.focus();
+        return;
+      }
+      clearAuthError();
+      authKeyField.value = '';
+      setDialogStep(true);
+      dialog.scrollTop = 0;
+      form.elements.namedItem('type').focus();
+    });
 
     Object.keys(textLimits).forEach((name) => {
       const field = form.elements.namedItem(name);
@@ -215,9 +259,7 @@
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();
-      authKeyField.setCustomValidity(
-        authKeyField.value === publicationKey ? '' : 'La clave de autenticación es incorrecta.'
-      );
+      if (!keyVerified) return;
       Object.keys(textLimits).forEach((name) => {
         const field = form.elements.namedItem(name);
         field.setCustomValidity(field.value.trim() ? '' : 'Completá este campo con texto.');
