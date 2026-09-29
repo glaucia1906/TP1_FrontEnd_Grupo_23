@@ -169,22 +169,66 @@
 }
 
 .bowling-game {
+  --bowling-frame-radius: 22px;
+  --bowling-frame-gap: 6px;
+  --bowling-divider: rgba(157, 193, 217, .12);
+  position: relative;
+  isolation: isolate;
   scroll-margin-top: 16px;
   overflow: hidden;
-  border: 1px solid rgba(120, 191, 255, .26);
-  border-radius: 18px;
-  background: linear-gradient(130deg, rgba(26, 42, 70, .75), rgba(12, 19, 36, .98) 55%);
-  box-shadow: var(--shadow);
+  padding: var(--bowling-frame-gap);
+  border: 1px solid transparent;
+  border-radius: var(--bowling-frame-radius);
+  background:
+    linear-gradient(135deg, #26394d, #101b2c 32%, #0b1220 70%, #233749) padding-box,
+    linear-gradient(145deg, #647e93, #2a4055 32%, #172536 70%, #49677c) border-box;
+  box-shadow:
+    0 0 0 1px rgba(3, 7, 15, .8),
+    0 24px 56px -16px rgba(0, 0, 0, .65),
+    0 5px 14px rgba(0, 0, 0, .25),
+    inset 0 1px 0 rgba(226, 242, 255, .12);
+}
+
+/* A recessed inner edge and a fine reflection give the cabinet its depth. */
+.bowling-game::before,
+.bowling-game::after {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+  content: "";
+}
+
+.bowling-game::before {
+  top: 0;
+  right: 12%;
+  left: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(193, 237, 255, .65), transparent);
+}
+
+.bowling-game::after {
+  inset: var(--bowling-frame-gap);
+  border: 1px solid rgba(157, 193, 217, .15);
+  border-radius: calc(var(--bowling-frame-radius) - var(--bowling-frame-gap));
+  box-shadow: 0 0 0 1px rgba(3, 7, 15, .45);
 }
 
 .bowling-topbar {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-areas: "brand score tools";
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
   padding: 25px 30px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--bowling-divider);
+  border-radius: calc(var(--bowling-frame-radius) - var(--bowling-frame-gap)) calc(var(--bowling-frame-radius) - var(--bowling-frame-gap)) 0 0;
+  background: linear-gradient(120deg, #19273b, #101b2e 65%, #121e30);
+  box-shadow: inset 0 1px 0 rgba(220, 239, 255, .045);
+}
+
+.bowling-brand {
+  grid-area: brand;
+  min-width: 0;
 }
 
 .bowling-brand .eyebrow {
@@ -199,11 +243,22 @@
 }
 
 .bowling-scoreboard {
+  grid-area: score;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px 24px;
+  align-items: start;
+  justify-content: center;
+  justify-self: center;
+  gap: 16px 32px;
   min-width: 0;
+}
+
+.bowling-toolbar {
+  grid-area: tools;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-self: end;
+  gap: 10px;
 }
 
 .bowling-help-button {
@@ -359,7 +414,9 @@
 
 .bowling-stat {
   display: grid;
+  justify-items: center;
   gap: 7px;
+  text-align: center;
 }
 
 .bowling-stat > span {
@@ -376,6 +433,13 @@
   font-size: 1.15rem;
   line-height: 28px;
   font-variant-numeric: tabular-nums;
+}
+
+.bowling-attempts-remaining {
+  margin: 0;
+  color: var(--muted);
+  font-size: .64rem;
+  line-height: 1.4;
 }
 
 .bowling-attempts {
@@ -403,6 +467,7 @@
 }
 
 .bowling-mini-orb {
+  position: relative;
   display: grid;
   width: 18px;
   height: 18px;
@@ -416,12 +481,28 @@
   line-height: 1;
 }
 
-.bowling-attempts li.is-used {
-  opacity: .7;
-}
-
 .bowling-attempts li.is-used .bowling-mini-orb {
   filter: grayscale(1);
+  opacity: .7;
+  box-shadow: none;
+}
+
+.bowling-attempts li.is-used .bowling-mini-orb::after {
+  position: absolute;
+  top: calc(50% - 1px);
+  right: -2px;
+  left: -2px;
+  height: 2px;
+  border-radius: 2px;
+  background: #edf3ff;
+  box-shadow: 0 0 0 1px #17223b;
+  transform: rotate(-45deg);
+  content: "";
+}
+
+.bowling-attempts li.is-current {
+  border-color: var(--cyan);
+  background: rgba(73, 229, 255, .08);
 }
 
 
@@ -572,8 +653,9 @@
   justify-content: space-between;
   gap: 20px;
   padding: 18px 32px;
-  border-top: 1px solid rgba(120, 191, 255, .14);
-  background: rgba(7, 11, 24, .3);
+  border-top: 1px solid var(--bowling-divider);
+  background: linear-gradient(180deg, #0e192b, #0c1525);
+  box-shadow: 0 -1px 0 rgba(3, 7, 15, .35);
 }
 
 .bowling-launch {
@@ -664,6 +746,70 @@
   line-height: 1.6;
 }
 
+.bowling-shot-summary {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  margin: 0 0 16px;
+}
+
+.bowling-game[data-phase="result"] .bowling-shot-summary {
+  margin-bottom: 0;
+}
+
+.bowling-result-attempts {
+  justify-content: center;
+  gap: 12px;
+}
+
+.bowling-result-attempts li {
+  width: 40px;
+  height: 40px;
+}
+
+.bowling-result-attempts .bowling-mini-orb {
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+}
+
+#bowling-shots-remaining {
+  margin: 0;
+  color: var(--text);
+  font-size: .76rem;
+  line-height: 1.5;
+}
+
+.bowling-game:not([data-phase="idle"]) .bowling-banner {
+  width: min(100%, 330px);
+  padding: 18px;
+  border-radius: 12px;
+}
+
+.bowling-game:not([data-phase="idle"]) .bowling-banner-orb {
+  display: none;
+}
+
+.bowling-game:not([data-phase="idle"]) #bowling-overlay-eyebrow {
+  margin-bottom: 8px;
+}
+
+.bowling-game:not([data-phase="idle"]) #bowling-overlay-title {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.bowling-game:not([data-phase="idle"]) #bowling-overlay-message {
+  margin-bottom: 14px;
+  font-size: .8rem;
+}
+
+.bowling-game:not([data-phase="idle"]) :is(#bowling-start, .bowling-banner-actions > .button) {
+  min-height: 44px;
+  padding: 8px 10px;
+  font-size: .76rem;
+}
+
 #bowling-start {
   width: 100%;
   min-height: 50px;
@@ -726,8 +872,8 @@
 
 .bowling-feedback {
   padding: 13px 24px;
-  border-top: 1px solid var(--border);
-  background: rgba(73, 229, 255, .025);
+  border-top: 1px solid var(--bowling-divider);
+  background: #101c2e;
   text-align: center;
 }
 
@@ -964,8 +1110,10 @@
   justify-content: center;
   gap: 14px 24px;
   padding: 19px 24px;
-  border-top: 1px solid var(--border);
-  background: rgba(7, 11, 24, .3);
+  border-top: 1px solid var(--bowling-divider);
+  border-radius: 0 0 calc(var(--bowling-frame-radius) - var(--bowling-frame-gap)) calc(var(--bowling-frame-radius) - var(--bowling-frame-gap));
+  background: linear-gradient(180deg, #0d1728, #0a1322);
+  box-shadow: inset 0 -1px 0 rgba(205, 230, 247, .035);
 }
 
 .bowling-footer p {
@@ -973,6 +1121,55 @@
   color: var(--muted);
   font-size: .76rem;
   text-align: center;
+}
+
+.bowling-sound {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-width: 180px;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid rgba(73, 229, 255, .3);
+  border-radius: 999px;
+  color: var(--cyan);
+  background: rgba(73, 229, 255, .06);
+  font: inherit;
+  font-size: .76rem;
+  font-weight: 700;
+  line-height: 1.4;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: border-color .2s, color .2s, background .2s;
+}
+
+.bowling-sound svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.bowling-sound-off,
+.bowling-sound[aria-pressed="false"] .bowling-sound-on {
+  display: none;
+}
+
+.bowling-sound[aria-pressed="false"] .bowling-sound-off {
+  display: inline;
+}
+
+.bowling-sound[aria-pressed="false"] {
+  border-color: var(--border);
+  color: var(--muted);
+  background: rgba(7, 11, 24, .3);
+}
+
+.bowling-sound:is(:hover, :focus-visible):not(:disabled) {
+  border-color: var(--cyan);
+  color: var(--text);
+  background: rgba(73, 229, 255, .12);
 }
 
 .bowling-orbs {
@@ -1007,7 +1204,19 @@
 }
 
 
+@media (max-width: 1024px) {
+  .bowling-topbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "brand tools" "score score";
+  }
+}
+
 @media (max-width: 700px) {
+  .bowling-topbar {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "brand" "score" "tools";
+  }
+
   .bowling-controls {
     grid-template-columns: 140px minmax(0, 1fr);
     column-gap: 22px;
@@ -1057,24 +1266,36 @@
 
 @media (max-width: 480px) {
   .bowling-game {
-    border-radius: 12px;
+    --bowling-frame-radius: 16px;
+    --bowling-frame-gap: 4px;
   }
 
   .bowling-topbar {
-    align-items: flex-start;
-    flex-direction: column;
     gap: 18px;
     padding: 20px;
   }
 
   .bowling-scoreboard {
-    justify-content: space-between;
-    width: 100%;
-    gap: 12px;
+    gap: 24px;
   }
 
   .bowling-stat {
     gap: 5px;
+  }
+
+  .bowling-sound {
+    width: 48px;
+    min-width: 48px;
+    padding: 10px;
+  }
+
+  .bowling-sound [data-sound-label] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   .bowling-arena {

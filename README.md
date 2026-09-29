@@ -49,6 +49,7 @@ TP1_FrontEnd_Grupo_23/
 │       └── sources-sebastian.json
 ├── components/
 │   ├── bowling/
+│   │   ├── bowling-audio.js
 │   │   ├── bowling.css
 │   │   └── bowling.js
 │   ├── challenge/
@@ -147,6 +148,8 @@ Luego accedé a `http://localhost:8000/`. La bitácora estará en `http://localh
 
 - Portada: el botón **Activar poder** cambia el estado visual y el mensaje del núcleo de energía.
 - Esferas: el bowling de la portada comienza con **Empezar partida** y desafía a derribar diez palos en un máximo de tres lanzamientos. La pista ocupa todo el ancho y muestra la potencia en una barra vertical. Las cuatro flechas del teclado mueven la mira; mantené presionado el botón de lanzamiento con el mouse para cargar potencia y soltalo para lanzar. También se puede mantener y soltar Espacio con el botón enfocado, y usar los controles de dirección en pantallas táctiles. Las instrucciones están en **Ayuda**. Al finalizar aparece un cartel de victoria con la clave compartida de la bitácora o de **Game over**, con la opción **Volver a jugar**. **Reiniciar partida** vuelve al cartel inicial. La victoria no se guarda ni completa el formulario automáticamente.
+- Sonidos del bowling: efectos de carga, lanzamiento, rodadura, impactos y resultados, generados en el navegador sin descargar archivos de audio. El botón **Sonido activado / Sonido silenciado** permite silenciarlos y recuerda la preferencia en ese navegador. El audio comienza con una interacción y se detiene al reiniciar o salir de la pestaña.
+- Resultados por intento: al terminar cada lanzamiento aparece un popup con los palos derribados en ese tiro, el total y tres esferas que distinguen los intentos usados de los disponibles. La esfera se consume al lanzar; cancelar la carga conserva el intento. El resultado intermedio se cierra automáticamente a los dos segundos; Esc permite cerrarlo antes. El tiempo se reinicia al volver de la ayuda o de una pestaña oculta. El último tiro muestra este resumen junto con la victoria o el Game Over, que permanece visible para consultar la clave o volver a jugar.
 - Navegación: el menú se abre y cierra en pantallas pequeñas.
 - Retratos: las fotos alternan entre su estado base y su transformación.
 - Perfiles: el botón **Generar desafío** propone un reto aleatorio de desarrollo.

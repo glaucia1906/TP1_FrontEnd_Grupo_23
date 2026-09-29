@@ -14,11 +14,16 @@
   const overlayTitle = section.querySelector('#bowling-overlay-title');
   const overlayMessage = section.querySelector('#bowling-overlay-message');
   const overlayEyebrow = section.querySelector('#bowling-overlay-eyebrow');
+  const bannerActions = section.querySelector('.bowling-banner-actions');
   const startButton = section.querySelector('#bowling-start');
   const logbookLink = section.querySelector('#bowling-logbook');
   const status = section.querySelector('#bowling-status');
   const score = section.querySelector('#bowling-score');
   const attempts = [...section.querySelectorAll('#bowling-attempts li')];
+  const resultAttempts = [...section.querySelectorAll('#bowling-result-attempts li')];
+  const attemptsRemaining = section.querySelector('#bowling-attempts-remaining');
+  const shotSummary = section.querySelector('#bowling-shot-summary');
+  const shotsRemaining = section.querySelector('#bowling-shots-remaining');
   const orbs = [...section.querySelectorAll('.bowling-collectible')];
   const directionButtons = [...section.querySelectorAll('[data-aim]')];
   const reward = section.querySelector('#bowling-reward');
@@ -29,6 +34,7 @@
   const powerValue = section.querySelector('#bowling-power-value');
   const powerFill = section.querySelector('#bowling-power-fill');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const audio = window.DragonByteBowlingAudio;
   const svgNS = 'http://www.w3.org/2000/svg';
   const start = { x: 50, y: 94 };
   const arrowDirections = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right' };
@@ -47,6 +53,7 @@
   let impactQueue = [];
   let ignoreClickUntil = 0;
   let copyRequest = 0;
+  let resultTimer = 0;
 
   // A single, normalized playing field keeps collisions identical at every screen size.
   function project(x, y) {
@@ -108,10 +115,11 @@
   const ballElement = lane.querySelector('#bowling-ball');
 
   function setPhase(value) {
+    if (value !== 'result') clearResultTimer();
     phase = value;
     game.dataset.phase = value;
     const ended = value === 'won' || value === 'lost';
-    const blocked = value === 'idle' || ended;
+    const blocked = value === 'idle' || value === 'result' || ended;
     playfield.inert = blocked;
     overlay.hidden = !blocked;
     arena.tabIndex = blocked ? -1 : 0;
@@ -119,11 +127,12 @@
     directionButtons.forEach((button) => { button.disabled = value !== 'aiming'; });
     target.style.display = blocked || value === 'rolling' ? 'none' : '';
     trajectory.style.display = blocked || value === 'rolling' ? 'none' : '';
-    launchButton.textContent = value === 'charging' ? 'Cargando…' : value === 'rolling' ? 'Esfera en movimiento…' : ended ? 'Partida terminada' : 'Cargar esfera';
+    launchButton.textContent = value === 'charging' ? 'Cargando…' : value === 'rolling' ? 'Esfera en movimiento…' : value === 'result' ? 'Resultado del intento' : ended ? 'Partida terminada' : 'Cargar esfera';
   }
 
   function updatePower(value) {
     power = Math.round(value);
+    if (phase === 'charging') audio?.updateCharge(power);
     powerValue.textContent = `${power}%`;
     powerFill.style.height = `${power}%`;
     powerMeter.setAttribute('aria-valuenow', String(power));
@@ -156,28 +165,69 @@
 
   function updateScore() {
     const count = pins.filter((pin) => pin.down).length;
+    const used = shots.length + (phase === 'rolling' ? 1 : 0);
+    const ended = phase === 'won' || phase === 'lost';
+    const current = phase === 'rolling' ? shots.length : phase === 'result' || ended ? shots.length - 1 : -1;
     score.textContent = `${count} / 10`;
+    attemptsRemaining.textContent = `${used} de 3 usados`;
     orbs.forEach((orb, index) => orb.classList.toggle('is-lit', count >= Math.ceil((index + 1) * 10 / 7)));
-    attempts.forEach((attempt, index) => {
-      attempt.classList.toggle('is-used', index < shots.length);
-      attempt.classList.toggle('is-active', index === shots.length && phase !== 'idle' && phase !== 'won' && phase !== 'lost');
-      attempt.setAttribute('aria-label', index < shots.length ? `Tiro ${index + 1}: ${shots[index]} palos derribados` : `Tiro ${index + 1} disponible`);
-      attempt.firstElementChild.textContent = index < shots.length ? String(shots[index]) : '★';
-    });
+    [attempts, resultAttempts].forEach((list) => list.forEach((attempt, index) => {
+      const consumed = index < used;
+      const completed = index < shots.length;
+      const label = completed
+        ? `Intento ${index + 1} usado: ${shots[index]} ${shots[index] === 1 ? 'palo derribado' : 'palos derribados'}`
+        : consumed ? `Intento ${index + 1} usado: lanzamiento en curso`
+          : `Intento ${index + 1} ${ended ? 'sin usar' : 'disponible'}`;
+      attempt.classList.toggle('is-used', consumed);
+      attempt.classList.toggle('is-active', index === shots.length && (phase === 'aiming' || phase === 'charging'));
+      attempt.classList.toggle('is-current', index === current);
+      attempt.setAttribute('aria-label', label);
+      attempt.title = label;
+    }));
     return count;
   }
 
   function updateBanner() {
     const won = phase === 'won';
     const lost = phase === 'lost';
-    overlayEyebrow.textContent = won ? 'MISIÓN CUMPLIDA' : lost ? 'FIN DE LA PARTIDA' : 'DRAGONBYTE ARCADE';
-    overlayTitle.textContent = won ? '¡Desafío completado!' : lost ? 'Game over' : '¿Listo para jugar?';
-    overlayMessage.textContent = won
-      ? `10 de 10 palos en ${shots.length} ${shots.length === 1 ? 'lanzamiento' : 'lanzamientos'}. ${reward.hidden ? 'No se pudo cargar la clave de la bitácora.' : 'La clave de la bitácora es tuya.'}`
-      : lost ? `${pins.filter((pin) => pin.down).length} de 10 palos. Se agotaron tus tres oportunidades.`
-        : 'Tu próxima misión empieza acá.';
+    const result = phase === 'result';
+    const down = pins.filter((pin) => pin.down).length;
+    const hit = shots[shots.length - 1] || 0;
+    const remaining = 3 - shots.length;
+    overlayEyebrow.textContent = result || won || lost ? `INTENTO ${shots.length} DE 3` : 'DRAGONBYTE ARCADE';
+    overlayTitle.textContent = won ? '¡Ganaste!' : lost ? 'Game over' : result ? (hit ? `Derribaste ${hit} ${hit === 1 ? 'palo' : 'palos'}` : 'Sin derribos') : '¿Listo para jugar?';
+    overlayMessage.textContent = won || lost
+      ? `${hit} ${hit === 1 ? 'palo' : 'palos'} en este tiro. Total: ${down}/10.${won && reward.hidden ? ' No se pudo cargar la clave.' : ''}`
+      : result ? `Total: ${down}/10 palos derribados.` : 'Tu próxima misión empieza acá.';
+    shotSummary.hidden = !result && !won && !lost;
+    shotsRemaining.textContent = lost ? 'Sin intentos disponibles.'
+      : won ? (remaining ? `${remaining} ${remaining === 1 ? 'esfera sin usar' : 'esferas sin usar'}.` : 'Usaste las 3 esferas.')
+        : `${remaining} ${remaining === 1 ? 'intento disponible' : 'intentos disponibles'}.`;
+    bannerActions.hidden = result;
     startButton.textContent = won || lost ? 'Volver a jugar' : 'Empezar partida';
     logbookLink.hidden = !won || reward.hidden;
+  }
+
+  function clearResultTimer() {
+    window.clearTimeout(resultTimer);
+    resultTimer = 0;
+  }
+
+  function scheduleResultClose() {
+    clearResultTimer();
+    if (phase !== 'result' || helpDialog.open || document.hidden) return;
+    resultTimer = window.setTimeout(continueGame, 2000);
+  }
+
+  function continueGame() {
+    if (phase !== 'result') return;
+    const restoreFocus = overlay.contains(document.activeElement);
+    setPhase('aiming');
+    updatePower(0);
+    updateScore();
+    updateBanner();
+    status.textContent = `Intento ${shots.length + 1} de 3. Ajustá la mira y cargá la esfera.`;
+    if (restoreFocus && !helpDialog.open && !document.hidden) arena.focus({ preventScroll: true });
   }
 
   function moveAim(direction) {
@@ -237,6 +287,7 @@
   function knockPin(pin, energy, direction) {
     if (pin.down) return;
     pin.down = true;
+    audio?.hit(energy);
     pin.fellAt = rollTime;
     pin.fallDirection = direction < 0 ? -1 : 1;
     if (energy < .34) return;
@@ -252,6 +303,7 @@
 
   function finishRoll() {
     frame = 0;
+    audio?.stopRoll();
     const down = pins.filter((pin) => pin.down).length;
     const hit = down - shots.reduce((total, value) => total + value, 0);
     shots.push(hit);
@@ -270,10 +322,11 @@
       setPhase('lost');
       status.textContent = `Fin de la partida: ${down} de 10 palos. Sin tiros disponibles.`;
     } else {
-      setPhase('aiming');
+      setPhase('result');
       const remaining = 3 - shots.length;
       status.textContent = `${hit ? `¡Derribaste ${hit} ${hit === 1 ? 'palo' : 'palos'}!` : power < 45 ? 'Potencia insuficiente.' : 'La esfera pasó de largo.'} ${10 - down} en pie. ${remaining === 1 ? 'Te queda 1 tiro.' : `Te quedan ${remaining} tiros.`}`;
     }
+    audio?.result(phase === 'won' || phase === 'lost' ? phase : hit ? 'hit' : 'miss');
     updateScore();
     drawBall();
     updateBanner();
@@ -281,6 +334,7 @@
     if (!helpDialog.open && (section.contains(document.activeElement) || document.activeElement === document.body)) {
       (overlay.hidden ? arena : overlayTitle).focus({ preventScroll: true });
     }
+    scheduleResultClose();
   }
 
   function animateRoll(timestamp) {
@@ -297,6 +351,7 @@
       });
       if (ball.traveled >= ball.distance || ball.y < 2 || ball.x < 3 || ball.x > 97) {
         ball.finished = true;
+        audio?.stopRoll();
         ball.finishedAt = rollTime;
       }
     }
@@ -312,10 +367,13 @@
 
   function launch(value = power) {
     if (phase !== 'aiming' && phase !== 'charging') return;
+    audio?.unlock();
     cancelAnimationFrame(frame);
     chargeSource = null;
     updatePower(value);
+    audio?.launch(power);
     setPhase('rolling');
+    updateScore();
     status.textContent = `Lanzamiento ${shots.length + 1} de 3. Potencia: ${power}%.`;
     const length = Math.hypot(aim.x - start.x, aim.y - start.y);
     ball = { ...start, dx: (aim.x - start.x) / length, dy: (aim.y - start.y) / length, distance: 40 + power * .72, traveled: 0, speed: 42 + power * .7, finished: false };
@@ -336,6 +394,8 @@
 
   function beginCharge(source) {
     if (phase !== 'aiming') return;
+    audio?.unlock();
+    audio?.startCharge();
     chargeSource = source;
     chargeStarted = performance.now();
     setPhase('charging');
@@ -351,6 +411,7 @@
 
   function cancelCharge() {
     if (phase !== 'charging') return;
+    audio?.stopCharge();
     cancelAnimationFrame(frame);
     frame = 0;
     chargeSource = null;
@@ -361,6 +422,7 @@
   }
 
   function reset(nextPhase = 'idle') {
+    audio?.stopAll();
     cancelCharge();
     cancelAnimationFrame(frame);
     frame = 0;
@@ -423,6 +485,11 @@
   });
   section.addEventListener('keydown', (event) => {
     if (event.altKey || event.ctrlKey || event.metaKey) return;
+    if (event.key === 'Escape' && phase === 'result' && !helpDialog.open) {
+      event.preventDefault();
+      continueGame();
+      return;
+    }
     const playingControl = event.target === arena || event.target === launchButton || directionButtons.includes(event.target);
     if (!playingControl) return;
     if (arrowDirections[event.key] && (phase === 'aiming' || phase === 'charging')) {
@@ -448,23 +515,34 @@
   section.addEventListener('focusout', (event) => {
     if (phase === 'charging' && event.relatedTarget !== event.target) cancelCharge();
   });
-  window.addEventListener('blur', cancelCharge);
-  document.addEventListener('visibilitychange', () => { if (document.hidden) cancelCharge(); });
+  window.addEventListener('blur', () => { cancelCharge(); audio?.stopAll(); });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelCharge();
+      clearResultTimer();
+    } else {
+      scheduleResultClose();
+    }
+  });
   helpButton.addEventListener('click', () => {
     cancelCharge();
+    clearResultTimer();
     if (!helpDialog.open) helpDialog.showModal();
   });
   helpDialog.querySelectorAll('[data-close-help]').forEach((button) => {
     button.addEventListener('click', () => helpDialog.close());
   });
   helpDialog.addEventListener('close', () => {
-    const focusTarget = phase === 'won' || phase === 'lost' ? overlayTitle : helpButton;
+    const focusTarget = phase === 'result' || phase === 'won' || phase === 'lost' ? overlayTitle : helpButton;
     focusTarget.focus({ preventScroll: true });
+    scheduleResultClose();
   });
   copyButton.addEventListener('click', copyKey);
   startButton.addEventListener('click', () => {
-    if (overlay.hidden) return;
+    if (overlay.hidden || phase === 'result') return;
     reset('aiming');
+    audio?.unlock();
+    audio?.result('start');
     arena.focus({ preventScroll: true });
   });
   resetButton.addEventListener('click', () => { reset(); startButton.focus({ preventScroll: true }); });
